@@ -3,14 +3,12 @@ package io.eddvance.practice.choice;
 import io.eddvance.practice.exceptions.NumberAskedMustBe1to30;
 import io.eddvance.practice.interaction.InputReader;
 
-import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class NumberToChoice {
 
     private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
-    private Scanner scanner = new Scanner(System.in);
     private int numberAskedInt;
 
     public NumberToChoice(InputReader inputReader) throws NumberAskedMustBe1to30 {

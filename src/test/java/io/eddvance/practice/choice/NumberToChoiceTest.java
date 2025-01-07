@@ -16,15 +16,12 @@ class NumberToChoiceTest {
     @Mock
     private InputReader mockInputReader;
 
-    @Mock
-    private Scanner mockScanner;
-
     private NumberToChoice numberToChoice;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        numberToChoice = new NumberToChoice(mockInputReader, mockScanner);
+        numberToChoice = new NumberToChoice(mockInputReader);
     }
 
     @Test
@@ -82,7 +79,7 @@ class NumberToChoiceTest {
     @Test
     void testConstructor_NullInputReaderAndScanner() throws NumberAskedMustBe1to30 {
         // Act
-        NumberToChoice numberToChoiceWithNulls = new NumberToChoice(null, null);
+        NumberToChoice numberToChoiceWithNulls = new NumberToChoice(null);
 
         // Assert
         assertNotNull(numberToChoiceWithNulls);
