@@ -6,9 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 class NumberToChoiceTest {
@@ -25,63 +25,94 @@ class NumberToChoiceTest {
     }
 
     @Test
-    void testNumberChoice_ValidInput() throws Exception {
-        // Arrange
-        when(mockInputReader.readLine()).thenReturn("15");
-
-        // Act
+    void testNumberChoice_ValidInputOne() {
+        when(mockInputReader.readLine()).thenReturn("1");
         int result = numberToChoice.numberChoice();
-
-        // Assert
-        assertEquals(15, result);
+        assertEquals(1, result);
         verify(mockInputReader, times(1)).readLine();
     }
 
     @Test
-    void testNumberChoice_InvalidInput_Empty() throws Exception {
-        // Arrange
+    void testNumberChoice_ValidInputTen() {
+        when(mockInputReader.readLine()).thenReturn("10");
+        int result = numberToChoice.numberChoice();
+        assertEquals(10, result);
+        verify(mockInputReader, times(1)).readLine();
+    }
+
+    @Test
+    void testNumberChoice_ValidInputTwenty() {
+        when(mockInputReader.readLine()).thenReturn("20");
+        int result = numberToChoice.numberChoice();
+        assertEquals(20, result);
+        verify(mockInputReader, times(1)).readLine();
+    }
+
+    @Test
+    void testNumberChoice_ValidInputThirty() {
+        when(mockInputReader.readLine()).thenReturn("30");
+        int result = numberToChoice.numberChoice();
+        assertEquals(30, result);
+        verify(mockInputReader, times(1)).readLine();
+    }
+
+    @Test
+    void testNumberChoice_InvalidInput_Empty() {
         when(mockInputReader.readLine()).thenReturn("", "15");
-
-        // Act
         int result = numberToChoice.numberChoice();
-
-        // Assert
         assertEquals(15, result);
         verify(mockInputReader, times(2)).readLine();
     }
 
     @Test
-    void testNumberChoice_InvalidInput_OutOfRange() throws Exception {
-        // Arrange
+    void testNumberChoice_InvalidInput_EmptyTwo() {
+        when(mockInputReader.readLine()).thenReturn("", "1");
+        int result = numberToChoice.numberChoice();
+        assertEquals(1, result);
+        verify(mockInputReader, times(2)).readLine();
+    }
+
+    @Test
+    void testNumberChoice_InvalidInput_OutOfRange() {
         when(mockInputReader.readLine()).thenReturn("50", "15");
-
-        // Act
         int result = numberToChoice.numberChoice();
-
-        // Assert
         assertEquals(15, result);
         verify(mockInputReader, times(2)).readLine();
     }
 
     @Test
-    void testNumberChoice_InvalidInput_NotANumber() throws Exception {
-        // Arrange
-        when(mockInputReader.readLine()).thenReturn("abc", "15");
-
-        // Act
+    void testNumberChoice_InvalidInput_OutOfRangeBigger() {
+        when(mockInputReader.readLine()).thenReturn("50000", "15");
         int result = numberToChoice.numberChoice();
+        assertEquals(15, result);
+        verify(mockInputReader, times(2)).readLine();
+    }
 
-        // Assert
+    @Test
+    void testNumberChoice_InvalidInput_NotANumber() {
+        when(mockInputReader.readLine()).thenReturn("abc", "15");
+        int result = numberToChoice.numberChoice();
+        assertEquals(15, result);
+        verify(mockInputReader, times(2)).readLine();
+    }
+
+    @Test
+    void testNumberChoice_InvalidInput_NotANumberAtAll() {
+        when(mockInputReader.readLine()).thenReturn(",./,!#@$%^&*()_", "15");
+        int result = numberToChoice.numberChoice();
         assertEquals(15, result);
         verify(mockInputReader, times(2)).readLine();
     }
 
     @Test
     void testConstructor_NullInputReaderAndScanner() throws NumberAskedMustBe1to30 {
-        // Act
         NumberToChoice numberToChoiceWithNulls = new NumberToChoice(null);
-
-        // Assert
         assertNotNull(numberToChoiceWithNulls);
+    }
+
+    @Test
+    void testConstructor_InitializesDefaultInputReader() throws NumberAskedMustBe1to30 {
+        NumberToChoice numberToChoiceWithNulls = new NumberToChoice(null);
+        assertNotNull(numberToChoiceWithNulls.getInputReader());
     }
 }

@@ -15,6 +15,10 @@ public class NumberToChoice {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
     }
 
+    public InputReader getInputReader() {
+        return inputReader;
+    }
+
     public NumberToChoice() {
         this(new InputReader());
     }
@@ -35,7 +39,7 @@ public class NumberToChoice {
                 String numberAskedAsString = inputReader.readLine();
 
                 if (numberAskedAsString == null || numberAskedAsString.isEmpty()) {
-                   logger.warning("Input cannot be empty. Please try again.");
+                    logger.warning("Input cannot be empty. Please try again.");
                     continue;
                 }
 
