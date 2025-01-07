@@ -8,19 +8,17 @@ import java.util.logging.Logger;
 
 public class NumberToChoice {
 
-    private InputReader inputReader;
+    private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
     private Scanner scanner = new Scanner(System.in);
-    private Scanner mockScanner;
     private int numberAskedInt;
 
-    public NumberToChoice(InputReader inputReader, Scanner scanner) throws NumberAskedMustBe1to30 {
+    public NumberToChoice(InputReader inputReader) throws NumberAskedMustBe1to30 {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
-        this.scanner = scanner != null ? scanner : new Scanner(System.in);
     }
 
     public NumberToChoice() {
-        this(new InputReader(), new Scanner(System.in));
+        this(new InputReader());
     }
 
     public int getNumberAskedInt() {
