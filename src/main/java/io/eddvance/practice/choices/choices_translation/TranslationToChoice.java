@@ -9,17 +9,18 @@ public class TranslationToChoice {
 
     private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
-    // private Scanner scanner;
-    // private Scanner mockScanner;
     private int languageSelection;
 
-    public TranslationToChoice(InputReader inputReader, Scanner scanner) {
+    public TranslationToChoice(InputReader inputReader) {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
-        // this.scanner = scanner != null ? scanner : new Scanner(System.in);
     }
 
     public TranslationToChoice() {
-        this(new InputReader(), new Scanner(System.in));
+        this(new InputReader());
+    }
+
+    public TranslationToChoice(InputReader mockInputReader, InputReader inputReader) {
+        this.inputReader = inputReader;
     }
 
     public int getLanguageSelection() {

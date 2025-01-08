@@ -1,6 +1,5 @@
-package io.eddvance.practice.choice_number;
+package io.eddvance.practice.choices.choice_number;
 
-import io.eddvance.practice.choices.choice_number.NumberToChoice;
 import io.eddvance.practice.exceptions.NumberAskedMustBe1to30;
 import io.eddvance.practice.interaction.InputReader;
 import org.junit.jupiter.api.BeforeEach;
