@@ -15,17 +15,17 @@ public class SearchAndReturn {
         if (languageSelection == 1) {
             if (number > 0 && number <= getFrenchTranslations().size()) {
                 translation = getFrenchTranslations().get(number - 1);
-                logger.info("The number " + number + " in french is : " + translation);//not easy using .fine
+                logger.info(STR."The number \{number} in french is : \{translation}");
             } else {
-                logger.severe("Numero invalide, entrez un nombre entre 1 et 30");
+                logger.severe("Invalid number, please enter a number between 1 and 30.");
             }
 
         } else if (languageSelection == 2) {
             if (number > 0 && number <= getGermanTranslations().size()) {
                 translation = getGermanTranslations().get(number - 1);
-                logger.info("The number " + number + " in German is : " + translation);//not easy using .fine
+                logger.info(STR."The number \{number} in German is : \{translation}");
             } else {
-                logger.severe("Numéro invalide, entrez un nombre entre 1 et ");
+                logger.severe("Invalid number, please enter a number between 1 and 30.");
             }
         }
         return translation;
