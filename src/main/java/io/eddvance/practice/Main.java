@@ -1,10 +1,11 @@
 package io.eddvance.practice;
 
-import io.eddvance.practice.choice.NumberToChoice;
-import io.eddvance.practice.search.SearchAndReturn;
-import io.eddvance.practice.translation_directory.FrenchTranslation;
-import io.eddvance.practice.translation_directory.GermanTranslation;
-import io.eddvance.practice.translator.TranslationToChoice;
+import io.eddvance.practice.choices.choice_number.NumberToChoice;
+import io.eddvance.practice.exceptions.AuRevoirException;
+import io.eddvance.practice.translation.translator.SearchAndReturn;
+import io.eddvance.practice.translation.data.FrenchTranslation;
+import io.eddvance.practice.translation.data.GermanTranslation;
+import io.eddvance.practice.choices.choices_translation.TranslationToChoice;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
@@ -24,7 +25,7 @@ public class Main {
             restart = scanner.nextLine();
         }
         while (restart.equalsIgnoreCase("y"));
-        logger.severe("Au revoir - Auf Wiedersehen");
+        throw new AuRevoirException();
     }
 
     private static String getString() {

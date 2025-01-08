@@ -1,4 +1,4 @@
-package io.eddvance.practice.translation_directory;
+package io.eddvance.practice.translation.data;
 
 import java.util.ArrayList;
 import java.util.List;

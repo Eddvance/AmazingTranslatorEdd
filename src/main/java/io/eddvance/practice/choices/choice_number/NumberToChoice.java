@@ -1,4 +1,4 @@
-package io.eddvance.practice.choice;
+package io.eddvance.practice.choices.choice_number;
 
 import io.eddvance.practice.exceptions.NumberAskedMustBe1to30;
 import io.eddvance.practice.interaction.InputReader;

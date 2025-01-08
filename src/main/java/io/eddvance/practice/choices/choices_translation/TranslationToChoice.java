@@ -1,4 +1,4 @@
-package io.eddvance.practice.translator;
+package io.eddvance.practice.choices.choices_translation;
 
 import io.eddvance.practice.interaction.InputReader;
 
