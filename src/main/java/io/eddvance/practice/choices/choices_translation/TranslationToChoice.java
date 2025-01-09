@@ -15,6 +15,10 @@ public class TranslationToChoice {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
     }
 
+    public InputReader getInputReader() {
+        return inputReader;
+    }
+
     public TranslationToChoice() {
         this(new InputReader());
     }
@@ -58,4 +62,5 @@ public class TranslationToChoice {
         }
         return languageSelection;
     }
+
 }
