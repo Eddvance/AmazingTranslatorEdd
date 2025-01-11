@@ -33,7 +33,7 @@ public class NumberToChoice {
 
 
     public int numberChoice() {
-        while (true) {
+        do {
             try {
                 logger.info("What is the number to translate?");
                 String numberAskedAsString = inputReader.readLine();
@@ -53,7 +53,7 @@ public class NumberToChoice {
             } catch (NumberFormatException e) {
                 logger.warning("Invalid input. Please enter a valid number.");
             }
-        }
+        } while (true);
         return numberAskedInt;
     }
 }
