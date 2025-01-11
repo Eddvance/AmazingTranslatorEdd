@@ -12,6 +12,19 @@ import java.util.logging.Logger;
 
 
 public class Main {
+
+    static FrenchTranslation frenchTranslation = new FrenchTranslation();
+    static GermanTranslation germanTranslation = new GermanTranslation();
+
+    static SearchAndReturn searchAndReturn = new SearchAndReturn();
+    static TranslationToChoice translationToChoice = new TranslationToChoice();
+    static NumberToChoice numberToChoice = new NumberToChoice();
+
+    static {
+        frenchTranslation.frenchTranslation();
+        germanTranslation.germanTranslation();
+    }
+
     public static void main(String[] args) {
 
         final Logger logger = Logger.getLogger(Main.class.getName());
@@ -25,18 +38,14 @@ public class Main {
             restart = scanner.nextLine();
         }
         while (restart.equalsIgnoreCase("y"));
-        throw new AuRevoirException();
+        logger.info("Au revoir - Auf Wiedersehen");
     }
 
     private static String getString() {
-        FrenchTranslation frenchTranslation = new FrenchTranslation();
-        frenchTranslation.frenchTranslation();
-        GermanTranslation germanTranslation = new GermanTranslation();
-        germanTranslation.germanTranslation();
 
-        SearchAndReturn searchAndReturn = new SearchAndReturn();
-        TranslationToChoice translationToChoice = new TranslationToChoice();
-        NumberToChoice numberToChoice = new NumberToChoice();
+
+
+
 
         int number = numberToChoice.numberChoice();
         int languageSelection = translationToChoice.translationChoice();
