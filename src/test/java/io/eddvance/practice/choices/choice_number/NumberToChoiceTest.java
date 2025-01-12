@@ -75,9 +75,15 @@ class NumberToChoiceTest {
     @Test
     void testNumberChoice_InvalidInput_OutOfRange() {
         when(mockInputReader.readLine()).thenReturn("50", "15");
-        int result = numberToChoice.numberChoice();
-        assertEquals(15, result);
+        assertThrows(NumberAskedMustBe1to30.class, numberToChoice::numberChoice);
         verify(mockInputReader, times(2)).readLine();
+    }
+
+    @Test
+    void testNumberChoiceEach_InvalidInput_OutOfRange() {
+        when(mockInputReader.readLine()).thenReturn("50");
+        int result = numberToChoice.numberChoiceEach();
+        verify(mockInputReader, times(1)).readLine();
     }
 
     @Test
