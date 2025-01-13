@@ -1,7 +1,6 @@
 package io.eddvance.practice;
 
 import io.eddvance.practice.choices.choice_number.NumberToChoice;
-import io.eddvance.practice.exceptions.AuRevoirException;
 import io.eddvance.practice.translation.translator.SearchAndReturn;
 import io.eddvance.practice.translation.data.FrenchTranslation;
 import io.eddvance.practice.translation.data.GermanTranslation;
@@ -11,7 +10,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 
-public class Main {
+public class App {
 
     static FrenchTranslation frenchTranslation = new FrenchTranslation();
     static GermanTranslation germanTranslation = new GermanTranslation();
@@ -27,7 +26,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        final Logger logger = Logger.getLogger(Main.class.getName());
+        final Logger logger = Logger.getLogger(App.class.getName());
         final Scanner scanner = new Scanner(System.in);
         String restart;
 

@@ -12,6 +12,12 @@ public class NumberToChoice {
     private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
 
+    public int getNumberAskedInt() {
+        return numberAskedInt;
+    }
+
+    private int numberAskedInt;
+
     public NumberToChoice(InputReader inputReader) throws NumberAskedMustBe1to30 {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
     }
@@ -26,7 +32,6 @@ public class NumberToChoice {
 
 
     public int numberChoice() {
-
         while (true) {
             try {
                 return numberChoiceEach();
@@ -34,35 +39,24 @@ public class NumberToChoice {
                 continue;
             }
         }
-
     }
 
     public int numberChoiceEach() throws NumberAskedMustBe1to30, NumberAskedCantNotBeEmpty, NumberAskedMustBeNumeric {
-
         try {
             logger.info("What is the number to translate?");
             String numberAskedAsString = inputReader.readLine();
-
             if (numberAskedAsString == null || numberAskedAsString.isEmpty()) {
-                //logger.warning("Input cannot be empty. Please try again.");
-                throw new NumberAskedCantNotBeEmpty("Input cannot be empty. Please try again.");
-                //
+                throw new NumberAskedCantNotBeEmpty();
             }
-
-            int numberAskedInt = Integer.parseInt(numberAskedAsString);
+            numberAskedInt = Integer.parseInt(numberAskedAsString);
 
             if (numberAskedInt < 1 || numberAskedInt > 30) {
-                //logger.warning("Please enter a number between 1 and 30.");
-                throw new NumberAskedMustBe1to30();
-                //continue;
+                throw new NumberAskedMustBe1to30(numberAskedInt);
             }
-
             return numberAskedInt;
 
         } catch (NumberFormatException e) {
-            throw new NumberAskedMustBeNumeric("Invalid input. Please enter a valid number.");
+            throw new NumberAskedMustBeNumeric(numberAskedInt);
         }
-
     }
-
 }
