@@ -35,7 +35,6 @@ public class NumberToChoice {
         }
     }
 
-
     public int numberChoiceEach() throws NumberAskedMustBe1to30, NumberAskedCantNotBeEmpty, NumberAskedMustBeNumeric {
         int numberAskedInt;
         logger.info("What is the number to translate?");

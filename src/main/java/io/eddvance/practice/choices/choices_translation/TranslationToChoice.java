@@ -1,8 +1,6 @@
 package io.eddvance.practice.choices.choices_translation;
 
 import io.eddvance.practice.interaction.InputReader;
-
-import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class TranslationToChoice {

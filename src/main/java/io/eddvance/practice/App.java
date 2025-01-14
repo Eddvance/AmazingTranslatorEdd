@@ -1,49 +1,12 @@
 package io.eddvance.practice;
 
-import io.eddvance.practice.choices.choice_number.NumberToChoice;
-import io.eddvance.practice.choices.choices_translation.TranslationToChoice;
-import io.eddvance.practice.translation.data.FrenchTranslation;
-import io.eddvance.practice.translation.data.GermanTranslation;
-import io.eddvance.practice.translation.translator.SearchAndReturn;
-
-import java.util.Scanner;
-import java.util.logging.Logger;
-
+import io.eddvance.practice.execution.Execut;
 
 public class App {
 
-    static FrenchTranslation frenchTranslation = new FrenchTranslation();
-    static GermanTranslation germanTranslation = new GermanTranslation();
-
-    static SearchAndReturn searchAndReturn = new SearchAndReturn();
-    static TranslationToChoice translationToChoice = new TranslationToChoice();
-    public static NumberToChoice numberToChoice = new NumberToChoice();
-
-    static {
-        frenchTranslation.frenchTranslation();
-        germanTranslation.germanTranslation();
-    }
-
     public static void main(String[] args) {
 
-        final Logger logger = Logger.getLogger(App.class.getName());
-        final Scanner scanner = new Scanner(System.in);
-        String restart;
-
-        do {
-            String translation = getString();
-            logger.fine(() -> STR."Your translation is : \{translation}");
-            logger.info("Do you want to translate another number? (y)");
-            restart = scanner.nextLine();
-        }
-        while (restart.equalsIgnoreCase("y"));
-        logger.info("Au revoir - Auf Wiedersehen");
-    }
-
-    private static String getString() {
-        int number = numberToChoice.numberChoice();
-        int languageSelection = translationToChoice.translationChoice();
-
-        return searchAndReturn.getTranslation(number, languageSelection);
+        Execut execut = new Execut();
+        execut.action();
     }
 }
