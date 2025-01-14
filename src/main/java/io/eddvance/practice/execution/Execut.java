@@ -1,5 +1,6 @@
-package io.eddvance.practice;
+package io.eddvance.practice.execution;
 
+import io.eddvance.practice.App;
 import io.eddvance.practice.choices.choice_number.NumberToChoice;
 import io.eddvance.practice.choices.choices_translation.TranslationToChoice;
 import io.eddvance.practice.translation.data.FrenchTranslation;
@@ -9,23 +10,9 @@ import io.eddvance.practice.translation.translator.SearchAndReturn;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
+public class Execut {
 
-public class App {
-
-    static FrenchTranslation frenchTranslation = new FrenchTranslation();
-    static GermanTranslation germanTranslation = new GermanTranslation();
-
-    static SearchAndReturn searchAndReturn = new SearchAndReturn();
-    static TranslationToChoice translationToChoice = new TranslationToChoice();
-    public static NumberToChoice numberToChoice = new NumberToChoice();
-
-    static {
-        frenchTranslation.frenchTranslation();
-        germanTranslation.germanTranslation();
-    }
-
-    public static void main(String[] args) {
-
+    public void action() {
         final Logger logger = Logger.getLogger(App.class.getName());
         final Scanner scanner = new Scanner(System.in);
         String restart;
@@ -37,10 +24,19 @@ public class App {
             restart = scanner.nextLine();
         }
         while (restart.equalsIgnoreCase("y"));
-        logger.info("Au revoir - Auf Wiedersehen");
+        logger.warning("Au revoir - Auf Wiedersehen");
     }
 
     private static String getString() {
+        FrenchTranslation frenchTranslation = new FrenchTranslation();
+        frenchTranslation.frenchTranslation();
+        GermanTranslation germanTranslation = new GermanTranslation();
+        germanTranslation.germanTranslation();
+
+        SearchAndReturn searchAndReturn = new SearchAndReturn();
+        TranslationToChoice translationToChoice = new TranslationToChoice();
+        NumberToChoice numberToChoice = new NumberToChoice();
+
         int number = numberToChoice.numberChoice();
         int languageSelection = translationToChoice.translationChoice();
 
