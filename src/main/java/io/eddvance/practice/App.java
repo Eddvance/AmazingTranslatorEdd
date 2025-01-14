@@ -17,7 +17,7 @@ public class App {
 
     static SearchAndReturn searchAndReturn = new SearchAndReturn();
     static TranslationToChoice translationToChoice = new TranslationToChoice();
-    static NumberToChoice numberToChoice = new NumberToChoice();
+    public static NumberToChoice numberToChoice = new NumberToChoice();
 
     static {
         frenchTranslation.frenchTranslation();

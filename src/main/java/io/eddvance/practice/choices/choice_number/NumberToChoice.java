@@ -12,12 +12,6 @@ public class NumberToChoice {
     private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    public int getNumberAskedInt() {
-        return numberAskedInt;
-    }
-
-    private int numberAskedInt;
-
     public NumberToChoice(InputReader inputReader) throws NumberAskedMustBe1to30 {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
     }
@@ -36,27 +30,27 @@ public class NumberToChoice {
             try {
                 return numberChoiceEach();
             } catch (NumberAskedMustBe1to30 | NumberAskedCantNotBeEmpty | NumberAskedMustBeNumeric e) {
-                continue;
+                logger.info(e.getMessage());
             }
         }
     }
 
-    public int numberChoiceEach() throws NumberAskedMustBe1to30, NumberAskedCantNotBeEmpty, NumberAskedMustBeNumeric {
-        try {
-            logger.info("What is the number to translate?");
-            String numberAskedAsString = inputReader.readLine();
-            if (numberAskedAsString == null || numberAskedAsString.isEmpty()) {
-                throw new NumberAskedCantNotBeEmpty();
-            }
-            numberAskedInt = Integer.parseInt(numberAskedAsString);
 
+    public int numberChoiceEach() throws NumberAskedMustBe1to30, NumberAskedCantNotBeEmpty, NumberAskedMustBeNumeric {
+        int numberAskedInt;
+        logger.info("What is the number to translate?");
+        String numberAskedAsString = inputReader.readLine();
+        if (numberAskedAsString == null || numberAskedAsString.isEmpty()) {
+            throw new NumberAskedCantNotBeEmpty();
+        }
+        try {
+            numberAskedInt = Integer.parseInt(numberAskedAsString);
             if (numberAskedInt < 1 || numberAskedInt > 30) {
                 throw new NumberAskedMustBe1to30(numberAskedInt);
             }
             return numberAskedInt;
-
         } catch (NumberFormatException e) {
-            throw new NumberAskedMustBeNumeric(numberAskedInt);
+            throw new NumberAskedMustBeNumeric(numberAskedAsString);
         }
     }
 }

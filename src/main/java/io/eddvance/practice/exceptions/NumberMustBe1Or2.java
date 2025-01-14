@@ -5,3 +5,5 @@ public class NumberMustBe1Or2 extends RuntimeException {
         String message = "Number must be 1 or 2";
     }
 }
+
+// a modifier
