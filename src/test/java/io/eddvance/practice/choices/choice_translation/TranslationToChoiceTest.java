@@ -27,7 +27,7 @@ private TranslationToChoice translationToChoice;
     @Test
     void testLanguageToChoice_ValidInputOne(){
         when(mockInputReader.readLine()).thenReturn("1");
-        int result = translationToChoice.translationChoice();
+        int result = translationToChoice.translationChoiceEach();
         assert(result == 1);
         verify(mockInputReader, times(1)).readLine();
     }
@@ -35,7 +35,7 @@ private TranslationToChoice translationToChoice;
     @Test
     void testLanguageToChoice_ValidInputTwo(){
         when(mockInputReader.readLine()).thenReturn("2");
-        int result = translationToChoice.translationChoice();
+        int result = translationToChoice.translationChoiceEach();
         assert(result == 2);
         verify(mockInputReader, times(1)).readLine();
     }
@@ -43,7 +43,7 @@ private TranslationToChoice translationToChoice;
     @Test
     void testLanguageToChoice_Empty(){
         when(mockInputReader.readLine()).thenReturn("", "1");
-        int result = translationToChoice.translationChoice();
+        int result = translationToChoice.translationChoiceEach();
         assert(result == 1);
         verify(mockInputReader, times(2)).readLine();
     }
@@ -51,7 +51,7 @@ private TranslationToChoice translationToChoice;
     @Test
     void testLanguageToChoice_EmptyTwo(){
         when(mockInputReader.readLine()).thenReturn("", "2");
-        int result = translationToChoice.translationChoice();
+        int result = translationToChoice.translationChoiceEach();
         assert(result == 2);
         verify(mockInputReader, times(2)).readLine();
     }
@@ -59,7 +59,7 @@ private TranslationToChoice translationToChoice;
     @Test
     void testLanguageToChoice_NotANumberAtAll(){
         when(mockInputReader.readLine()).thenReturn(",./,!#@$%^&*()_", "1");
-        int result = translationToChoice.translationChoice();
+        int result = translationToChoice.translationChoiceEach();
         assert(result == 1);
         verify(mockInputReader, times(2)).readLine();
     }

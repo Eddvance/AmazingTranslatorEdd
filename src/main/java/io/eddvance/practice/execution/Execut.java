@@ -38,7 +38,7 @@ public class Execut {
         NumberToChoice numberToChoice = new NumberToChoice();
 
         int number = numberToChoice.numberChoice();
-        int languageSelection = translationToChoice.translationChoice();
+        int languageSelection = translationToChoice.translationToChoice();
 
         return searchAndReturn.getTranslation(number, languageSelection);
     }

@@ -1,6 +1,10 @@
 package io.eddvance.practice.choices.choices_translation;
 
+import io.eddvance.practice.exceptions.NumberAskedCantNotBeEmpty;
+import io.eddvance.practice.exceptions.NumberAskedMustBeNumeric;
+import io.eddvance.practice.exceptions.NumberMustBe1Or2;
 import io.eddvance.practice.interaction.InputReader;
+
 import java.util.logging.Logger;
 
 public class TranslationToChoice {
@@ -21,10 +25,6 @@ public class TranslationToChoice {
         this(new InputReader());
     }
 
-    public TranslationToChoice(InputReader mockInputReader, InputReader inputReader) {
-        this.inputReader = inputReader;
-    }
-
     public int getLanguageSelection() {
         return languageSelection;
     }
@@ -33,32 +33,31 @@ public class TranslationToChoice {
         this.languageSelection = languageSelection;
     }
 
-
-    public int translationChoice() {
-
-        boolean inputValid = false;
-        while (!inputValid) {
-
-            logger.info("What is language (1-French, 2-German)?");
-            String optionAsString = inputReader.readLine();
-
-            if (optionAsString == null || optionAsString.isEmpty()) {
-                logger.severe("Input cannot be empty. Please try again.");
-                continue;
-            }
-
+    public int translationToChoice() {
+        while (true) {
             try {
-                languageSelection = Integer.parseInt(optionAsString);
-                if (languageSelection == 1 || languageSelection == 2) {
-                    inputValid = true;
-                } else {
-                    logger.severe("Please enter a valid option: 1 for French, 2 for German.");
-                }
-            } catch (NumberFormatException nfe) {
-                logger.severe("The languageSelection had to be numeric");
+                return translationChoiceEach();
+            } catch (NumberAskedCantNotBeEmpty | NumberMustBe1Or2 | NumberAskedMustBeNumeric e) {
+                logger.info(e.getMessage());
             }
+        }
+    }
+
+    public int translationChoiceEach() {
+        logger.info("What is language (1-French, 2-German)?");
+        String optionAsString = inputReader.readLine();
+        if (optionAsString == null || optionAsString.isEmpty()) {
+            throw new NumberAskedCantNotBeEmpty();
+        }
+        try {
+            languageSelection = Integer.parseInt(optionAsString);
+            if (languageSelection != 1 && languageSelection != 2) {
+                throw new NumberMustBe1Or2();
+            }
+
+        } catch (NumberFormatException nfe) {
+            throw new NumberAskedMustBeNumeric(optionAsString);
         }
         return languageSelection;
     }
-
 }
