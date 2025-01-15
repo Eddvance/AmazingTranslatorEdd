@@ -52,7 +52,7 @@ public class TranslationToChoice {
         try {
             languageSelection = Integer.parseInt(optionAsString);
             if (languageSelection != 1 && languageSelection != 2) {
-                throw new NumberMustBe1Or2();
+                throw new NumberMustBe1Or2(languageSelection);
             }
 
         } catch (NumberFormatException nfe) {
