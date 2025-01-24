@@ -1,11 +1,14 @@
 package io.eddvance.practice.translation.translator;
 
+import io.eddvance.practice.interaction.InputReader;
+
 import java.util.logging.Logger;
 
 import static io.eddvance.practice.translation.data.FrenchTranslation.getFrenchTranslations;
 import static io.eddvance.practice.translation.data.GermanTranslation.getGermanTranslations;
 
 public class SearchAndReturn {
+
 
     public String getTranslation(Integer number, int languageSelection) {
 

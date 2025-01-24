@@ -7,6 +7,7 @@ public class App {
     public static void main(String[] args) {
 
         Execut execut = new Execut();
+        execut.init();
         execut.action();
     }
 }

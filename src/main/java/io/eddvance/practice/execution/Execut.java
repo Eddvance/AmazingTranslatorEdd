@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 public class Execut {
     private final Logger logger = Logger.getLogger(App.class.getName());
-    private InputReader inputReader;
+    private final InputReader inputReader;
     private final FrenchTranslation frenchTranslation = new FrenchTranslation();
     private final GermanTranslation germanTranslation = new GermanTranslation();
     private final SearchAndReturn searchAndReturn = new SearchAndReturn();
@@ -20,6 +20,11 @@ public class Execut {
     private final NumberToChoice numberToChoice = new NumberToChoice();
     public Execut() {
         this.inputReader = new InputReader();
+    }
+
+    public void init(){
+        frenchTranslation.frenchTranslation();
+        germanTranslation.germanTranslation();
     }
 
     public void action() {
@@ -36,8 +41,6 @@ public class Execut {
     }
 
     private String getString() {
-        frenchTranslation.frenchTranslation();
-        germanTranslation.germanTranslation();
 
         int number = numberToChoice.numberChoice();
         int languageSelection = translationToChoice.translationToChoice();
