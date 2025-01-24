@@ -20,8 +20,20 @@ public class ExecutTest {
     }
 
     @Test
-    void testExecute() {}
+    void TestGetTranslationFrench() {}
 
+    @Test
+    void TestGetTranslationGerman() {}
 
+    @Test
+    void TestInitFrenchTranslation() {}
 
+    @Test
+    void TestInitGermanTranslation() {}
+
+    @Test
+    void TestActionRestart() {}
+
+    @Test
+    void TestGetStringReturn() {}
 }

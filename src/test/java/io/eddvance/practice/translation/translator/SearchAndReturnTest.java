@@ -20,7 +20,11 @@ public class SearchAndReturnTest {
         //searchAndReturn = new SearchAndReturn(mockInputReader);
     }
     @Test
-    void TestGetTranslationFrench() {
+    void TestGetFrenchTranslation() {}
 
-    }
+    @Test
+    void TestGetGermanTranslation() {}
+
+    @Test
+    void TestGetTranslationReturn() {}
 }
