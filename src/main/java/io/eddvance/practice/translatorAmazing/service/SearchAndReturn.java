@@ -1,10 +1,13 @@
-package io.eddvance.practice.translatorAmazing.translation.translator;
+package io.eddvance.practice.translatorAmazing.service;
+
+import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
-import static io.eddvance.practice.translatorAmazing.translation.data.FrenchTranslation.getFrenchTranslations;
-import static io.eddvance.practice.translatorAmazing.translation.data.GermanTranslation.getGermanTranslations;
+import static io.eddvance.practice.translatorAmazing.repository.FrenchTranslation.getFrenchTranslations;
+import static io.eddvance.practice.translatorAmazing.repository.GermanTranslation.getGermanTranslations;
 
+@Service
 public class SearchAndReturn {
 
 

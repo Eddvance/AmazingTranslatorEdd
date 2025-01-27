@@ -1,12 +1,14 @@
-package io.eddvance.practice.translatorAmazing.choices.choice_number;
+package io.eddvance.practice.translatorAmazing.service;
 
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBe1to30;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
 import io.eddvance.practice.translatorAmazing.interaction.InputReader;
+import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
+@Service
 public class NumberToChoice {
 
     private final InputReader inputReader;

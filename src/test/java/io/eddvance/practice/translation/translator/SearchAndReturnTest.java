@@ -1,6 +1,6 @@
 package io.eddvance.practice.translation.translator;
 
-import io.eddvance.practice.translatorAmazing.translation.translator.SearchAndReturn;
+import io.eddvance.practice.translatorAmazing.service.SearchAndReturn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

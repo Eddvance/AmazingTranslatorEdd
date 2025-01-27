@@ -1,12 +1,12 @@
 package io.eddvance.practice.translatorAmazing.execution;
 
 import io.eddvance.practice.App;
-import io.eddvance.practice.translatorAmazing.choices.choice_number.NumberToChoice;
-import io.eddvance.practice.translatorAmazing.choices.choices_translation.TranslationToChoice;
+import io.eddvance.practice.translatorAmazing.service.NumberToChoice;
+import io.eddvance.practice.translatorAmazing.service.TranslationToChoice;
 import io.eddvance.practice.translatorAmazing.interaction.InputReader;
-import io.eddvance.practice.translatorAmazing.translation.data.FrenchTranslation;
-import io.eddvance.practice.translatorAmazing.translation.data.GermanTranslation;
-import io.eddvance.practice.translatorAmazing.translation.translator.SearchAndReturn;
+import io.eddvance.practice.translatorAmazing.repository.FrenchTranslation;
+import io.eddvance.practice.translatorAmazing.repository.GermanTranslation;
+import io.eddvance.practice.translatorAmazing.service.SearchAndReturn;
 
 import java.util.logging.Logger;
 

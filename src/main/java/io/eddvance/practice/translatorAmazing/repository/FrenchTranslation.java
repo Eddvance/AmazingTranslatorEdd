@@ -1,11 +1,21 @@
-package io.eddvance.practice.translatorAmazing.translation.data;
+package io.eddvance.practice.translatorAmazing.repository;
+
+import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FrenchTranslation {
 
     private static final List<String> frenchTranslations = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
+        frenchTranslation();
+    }
 
     public static List<String> getFrenchTranslations() {
         return frenchTranslations;

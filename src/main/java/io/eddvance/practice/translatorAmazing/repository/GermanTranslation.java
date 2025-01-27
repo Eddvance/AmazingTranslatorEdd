@@ -1,11 +1,20 @@
-package io.eddvance.practice.translatorAmazing.translation.data;
+package io.eddvance.practice.translatorAmazing.repository;
+
+import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class GermanTranslation {
 
     private static final List<String> germanTranslations = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {}
+
 
     public static List<String> getGermanTranslations() {
         return germanTranslations;
