@@ -5,23 +5,16 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Component
 public class GermanTranslation {
 
-    private static final List<String> germanTranslations = new ArrayList<>();
+    private final List<String> germanTranslations = new ArrayList<>();
 
     @PostConstruct
-    public void init() {}
-
-
-    public static List<String> getGermanTranslations() {
-        return germanTranslations;
-    }
-
-    public void germanTranslation() {
-
+    public void init() {
         germanTranslations.add("Eins");
         germanTranslations.add("Zwei");
         germanTranslations.add("Drei");
@@ -52,6 +45,9 @@ public class GermanTranslation {
         germanTranslations.add("Achtundzwanzig");
         germanTranslations.add("Neunundzwanzig");
         germanTranslations.add("Dreißig");
+    }
 
+    public List<String> getGermanTranslations() {
+        return Collections.unmodifiableList(germanTranslations);
     }
 }

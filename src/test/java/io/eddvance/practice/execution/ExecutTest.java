@@ -6,7 +6,7 @@ import io.eddvance.practice.translatorAmazing.interaction.InputReader;
 import io.eddvance.practice.translatorAmazing.repository.FrenchTranslation;
 import io.eddvance.practice.translatorAmazing.repository.GermanTranslation;
 import io.eddvance.practice.translatorAmazing.service.SearchAndReturn;
-import io.eddvance.practice.translatorAmazing.execution.Execut;
+import io.eddvance.practice.translatorAmazing.service.Execut;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -62,8 +62,6 @@ class ExecutTest {
 
     @Test
     void testAction_WithMocks() {
-        // On appelle init() pour ne pas oublier l'initialisation
-        execut.init();
 
         // Lance la boucle
         execut.action();
@@ -71,7 +69,7 @@ class ExecutTest {
         // Vérifications simples
         // On peut vérifier que frenchTranslation.frenchTranslation() a bien été appelé
         FrenchTranslation frenchTranslationMock = (FrenchTranslation) getFieldValue(execut, "frenchTranslation");
-        verify(frenchTranslationMock, times(1)).frenchTranslation();
+        verify(frenchTranslationMock, times(1)).frenchTranslation;
 
         // Vérifie qu'on a lu deux fois la ligne de commande (pour "y" puis "n")
         InputReader inputReaderMock = (InputReader) getFieldValue(execut, "inputReader");

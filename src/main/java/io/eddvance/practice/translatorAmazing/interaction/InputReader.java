@@ -1,7 +1,10 @@
 package io.eddvance.practice.translatorAmazing.interaction;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class InputReader {
     private final Scanner scanner;
 

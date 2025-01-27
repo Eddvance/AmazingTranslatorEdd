@@ -5,24 +5,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Component
 public class FrenchTranslation {
 
-    private static final List<String> frenchTranslations = new ArrayList<>();
+    private final List<String> frenchTranslations = new ArrayList<>();
 
     @PostConstruct
     public void init() {
-        frenchTranslation();
-    }
-
-    public static List<String> getFrenchTranslations() {
-        return frenchTranslations;
-    }
-
-    public void frenchTranslation() {
-
         frenchTranslations.add("Un");
         frenchTranslations.add("Deux");
         frenchTranslations.add("Trois");
@@ -53,5 +46,9 @@ public class FrenchTranslation {
         frenchTranslations.add("Vingt-huit");
         frenchTranslations.add("Vingt-neuf");
         frenchTranslations.add("Trente");
+    }
+
+    public List<String> getFrenchTranslations() {
+        return Collections.unmodifiableList(frenchTranslations);
     }
 }
