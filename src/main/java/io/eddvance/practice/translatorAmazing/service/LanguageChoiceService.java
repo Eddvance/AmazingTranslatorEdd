@@ -3,19 +3,19 @@ package io.eddvance.practice.translatorAmazing.service;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberMustBe1Or2;
-import io.eddvance.practice.translatorAmazing.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.util.InputReader;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
 @Service
-public class TranslationToChoice {
+public class LanguageChoiceService {
 
     private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
     private int languageSelection;
 
-    public TranslationToChoice(InputReader inputReader) {
+    public LanguageChoiceService(InputReader inputReader) {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
     }
 
@@ -23,7 +23,7 @@ public class TranslationToChoice {
         return inputReader;
     }
 
-    public TranslationToChoice() {
+    public LanguageChoiceService() {
         this(new InputReader());
     }
 

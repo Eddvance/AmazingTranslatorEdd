@@ -1,12 +1,12 @@
 package io.eddvance.practice.execution;
 
-import io.eddvance.practice.translatorAmazing.service.NumberToChoice;
-import io.eddvance.practice.translatorAmazing.service.TranslationToChoice;
-import io.eddvance.practice.translatorAmazing.interaction.InputReader;
-import io.eddvance.practice.translatorAmazing.repository.FrenchTranslation;
-import io.eddvance.practice.translatorAmazing.repository.GermanTranslation;
-import io.eddvance.practice.translatorAmazing.service.SearchAndReturn;
-import io.eddvance.practice.translatorAmazing.service.Execut;
+import io.eddvance.practice.translatorAmazing.service.NumberChoiceService;
+import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
+import io.eddvance.practice.translatorAmazing.util.InputReader;
+import io.eddvance.practice.translatorAmazing.repository.FrenchTranslationRepository;
+import io.eddvance.practice.translatorAmazing.repository.GermanTranslationRepository;
+import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
+import io.eddvance.practice.translatorAmazing.controller.TranslatorConsoleController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,20 +16,20 @@ import static org.mockito.Mockito.*;
 
 class ExecutTest {
 
-    private Execut execut;
+    private TranslatorConsoleController execut;
 
     @BeforeEach
     void setUp() throws Exception {
         // On instancie la classe normalement
-        execut = new Execut();
+        execut = new TranslatorConsoleController();
 
         // -- Mock des dépendances --
         InputReader mockReader = mock(InputReader.class);
-        FrenchTranslation mockFrenchTranslation = mock(FrenchTranslation.class);
-        GermanTranslation mockGermanTranslation = mock(GermanTranslation.class);
-        SearchAndReturn mockSearchAndReturn = mock(SearchAndReturn.class);
-        TranslationToChoice mockTranslationToChoice = mock(TranslationToChoice.class);
-        NumberToChoice mockNumberToChoice = mock(NumberToChoice.class);
+        FrenchTranslationRepository mockFrenchTranslation = mock(FrenchTranslationRepository.class);
+        GermanTranslationRepository mockGermanTranslation = mock(GermanTranslationRepository.class);
+        TranslationSearchService mockSearchAndReturn = mock(TranslationSearchService.class);
+        LanguageChoiceService mockTranslationToChoice = mock(LanguageChoiceService.class);
+        NumberChoiceService mockNumberToChoice = mock(NumberChoiceService.class);
 
         // -- Injection par réflexion --
         setFieldValue(execut, "inputReader", mockReader);
@@ -68,7 +68,7 @@ class ExecutTest {
 
         // Vérifications simples
         // On peut vérifier que frenchTranslation.frenchTranslation() a bien été appelé
-        FrenchTranslation frenchTranslationMock = (FrenchTranslation) getFieldValue(execut, "frenchTranslation");
+        FrenchTranslationRepository frenchTranslationMock = (FrenchTranslationRepository) getFieldValue(execut, "frenchTranslation");
         verify(frenchTranslationMock, times(1)).frenchTranslation;
 
         // Vérifie qu'on a lu deux fois la ligne de commande (pour "y" puis "n")
@@ -76,7 +76,7 @@ class ExecutTest {
         verify(inputReaderMock, times(2)).readLine();
 
         // Vérifie qu'on a demandé deux traductions
-        SearchAndReturn searchAndReturnMock = (SearchAndReturn) getFieldValue(execut, "searchAndReturn");
+        TranslationSearchService searchAndReturnMock = (TranslationSearchService) getFieldValue(execut, "searchAndReturn");
         verify(searchAndReturnMock).getTranslation(5, 1);
         verify(searchAndReturnMock).getTranslation(30, 2);
     }

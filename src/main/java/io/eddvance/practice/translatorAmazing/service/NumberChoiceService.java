@@ -3,18 +3,18 @@ package io.eddvance.practice.translatorAmazing.service;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBe1to30;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
-import io.eddvance.practice.translatorAmazing.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.util.InputReader;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
 @Service
-public class NumberToChoice {
+public class NumberChoiceService {
 
     private final InputReader inputReader;
     private final Logger logger = Logger.getLogger(getClass().getName());
 
-    public NumberToChoice(InputReader inputReader) throws NumberAskedMustBe1to30 {
+    public NumberChoiceService(InputReader inputReader) throws NumberAskedMustBe1to30 {
         this.inputReader = inputReader != null ? inputReader : new InputReader();
     }
 
@@ -22,7 +22,7 @@ public class NumberToChoice {
         return inputReader;
     }
 
-    public NumberToChoice() {
+    public NumberChoiceService() {
         this(new InputReader());
     }
 

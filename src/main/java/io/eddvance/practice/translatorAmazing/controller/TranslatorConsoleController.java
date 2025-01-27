@@ -1,23 +1,27 @@
-package io.eddvance.practice.translatorAmazing.service;
+package io.eddvance.practice.translatorAmazing.controller;
 
 import io.eddvance.practice.App;
-import io.eddvance.practice.translatorAmazing.interaction.InputReader;
-import org.springframework.stereotype.Service;
+import io.eddvance.practice.translatorAmazing.util.InputReader;
+import io.eddvance.practice.translatorAmazing.service.NumberChoiceService;
+import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
+import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
+import org.springframework.stereotype.Controller;
+
 
 import java.util.logging.Logger;
 
-@Service
-public class Execut {
+@Controller
+public class TranslatorConsoleController {
 
     private final Logger logger = Logger.getLogger(App.class.getName());
 
     private final InputReader inputReader;
 
-    private final SearchAndReturn searchAndReturn;
-    private final TranslationToChoice translationToChoice;
-    private final NumberToChoice numberToChoice;
+    private final TranslationSearchService searchAndReturn;
+    private final LanguageChoiceService translationToChoice;
+    private final NumberChoiceService numberToChoice;
 
-    public Execut(InputReader inputReader,SearchAndReturn searchAndReturn, TranslationToChoice translationToChoice, NumberToChoice numberToChoice) {
+    public TranslatorConsoleController(InputReader inputReader, TranslationSearchService searchAndReturn, LanguageChoiceService translationToChoice, NumberChoiceService numberToChoice) {
         this.inputReader = inputReader;
         this.searchAndReturn = searchAndReturn;
         this.translationToChoice = translationToChoice;

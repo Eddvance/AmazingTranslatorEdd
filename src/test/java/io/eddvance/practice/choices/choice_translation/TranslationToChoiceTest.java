@@ -1,10 +1,10 @@
 package io.eddvance.practice.choices.choice_translation;
 
-import io.eddvance.practice.translatorAmazing.service.TranslationToChoice;
+import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberMustBe1Or2;
-import io.eddvance.practice.translatorAmazing.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.util.InputReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -19,12 +19,12 @@ class TranslationToChoiceTest {
 @Mock
 private InputReader mockInputReader;
 
-private TranslationToChoice translationToChoice;
+private LanguageChoiceService translationToChoice;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        translationToChoice = new TranslationToChoice(mockInputReader);
+        translationToChoice = new LanguageChoiceService(mockInputReader);
     }
 
     @Test
@@ -84,13 +84,13 @@ private TranslationToChoice translationToChoice;
 
     @Test
     void testConstructor_NullInputReader () throws NumberMustBe1Or2{
-        TranslationToChoice translationToChoiceWithNulls = new TranslationToChoice(null);
+        LanguageChoiceService translationToChoiceWithNulls = new LanguageChoiceService(null);
         assertNotNull (translationToChoiceWithNulls);
     }
 
     @Test
     void testConstructor_InitializesDefaultInputReader() throws NumberMustBe1Or2{
-        TranslationToChoice translationToChoiceWithNulls = new TranslationToChoice(null);
+        LanguageChoiceService translationToChoiceWithNulls = new LanguageChoiceService(null);
         assertNotNull(translationToChoiceWithNulls.getInputReader());
     }
 }

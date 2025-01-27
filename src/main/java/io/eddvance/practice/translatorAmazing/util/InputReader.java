@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.interaction;
+package io.eddvance.practice.translatorAmazing.util;
 
 import org.springframework.stereotype.Component;
 

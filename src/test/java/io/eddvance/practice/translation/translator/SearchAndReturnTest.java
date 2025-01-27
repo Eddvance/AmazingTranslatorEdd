@@ -1,6 +1,6 @@
 package io.eddvance.practice.translation.translator;
 
-import io.eddvance.practice.translatorAmazing.service.SearchAndReturn;
+import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -9,7 +9,7 @@ public class SearchAndReturnTest {
     @Mock
     //private InputReader mockInputReader;
 
-    private SearchAndReturn searchAndReturn;
+    private TranslationSearchService searchAndReturn;
 
     @BeforeEach
     public void before() {

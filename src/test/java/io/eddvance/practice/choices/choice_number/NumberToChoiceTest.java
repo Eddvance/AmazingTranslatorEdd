@@ -3,8 +3,8 @@ package io.eddvance.practice.choices.choice_number;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBe1to30;
 import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
-import io.eddvance.practice.translatorAmazing.interaction.InputReader;
-import io.eddvance.practice.translatorAmazing.service.NumberToChoice;
+import io.eddvance.practice.translatorAmazing.util.InputReader;
+import io.eddvance.practice.translatorAmazing.service.NumberChoiceService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -18,12 +18,12 @@ class NumberToChoiceTest {
     @Mock
     private InputReader mockInputReader;
 
-    private NumberToChoice numberToChoice;
+    private NumberChoiceService numberToChoice;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        numberToChoice = new NumberToChoice(mockInputReader);
+        numberToChoice = new NumberChoiceService(mockInputReader);
     }
 
     @Test
@@ -105,13 +105,13 @@ class NumberToChoiceTest {
 
     @Test
     void testConstructor_NullInputReaderAndScanner() throws NumberAskedMustBe1to30 {
-        NumberToChoice numberToChoiceWithNulls = new NumberToChoice(null);
+        NumberChoiceService numberToChoiceWithNulls = new NumberChoiceService(null);
         assertNotNull(numberToChoiceWithNulls);
     }
 
     @Test
     void testConstructor_InitializesDefaultInputReader() throws NumberAskedMustBe1to30 {
-        NumberToChoice numberToChoiceWithNulls = new NumberToChoice(null);
+        NumberChoiceService numberToChoiceWithNulls = new NumberChoiceService(null);
         assertNotNull(numberToChoiceWithNulls.getInputReader());
     }
 

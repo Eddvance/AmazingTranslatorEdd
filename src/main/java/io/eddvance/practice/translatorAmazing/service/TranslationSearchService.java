@@ -1,18 +1,18 @@
 package io.eddvance.practice.translatorAmazing.service;
 
-import io.eddvance.practice.translatorAmazing.repository.FrenchTranslation;
-import io.eddvance.practice.translatorAmazing.repository.GermanTranslation;
+import io.eddvance.practice.translatorAmazing.repository.FrenchTranslationRepository;
+import io.eddvance.practice.translatorAmazing.repository.GermanTranslationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
 
 @Service
-public class SearchAndReturn {
+public class TranslationSearchService {
 
-    private final FrenchTranslation frenchTranslation;
-    private final GermanTranslation germanTranslation;
+    private final FrenchTranslationRepository frenchTranslation;
+    private final GermanTranslationRepository germanTranslation;
 
-    public SearchAndReturn(GermanTranslation germanTranslation, FrenchTranslation frenchTranslation) {
+    public TranslationSearchService(GermanTranslationRepository germanTranslation, FrenchTranslationRepository frenchTranslation) {
         this.germanTranslation = germanTranslation;
         this.frenchTranslation = frenchTranslation;
     }
