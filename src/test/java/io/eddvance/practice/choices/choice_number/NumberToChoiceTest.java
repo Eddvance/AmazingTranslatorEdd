@@ -1,8 +1,8 @@
 package io.eddvance.practice.choices.choice_number;
 
-import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
-import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBe1to30;
-import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
+import io.eddvance.practice.translatorAmazing.exception.NumberAskedCantNotBeEmpty;
+import io.eddvance.practice.translatorAmazing.exception.NumberAskedMustBe1to30;
+import io.eddvance.practice.translatorAmazing.exception.NumberAskedMustBeNumeric;
 import io.eddvance.practice.translatorAmazing.util.InputReader;
 import io.eddvance.practice.translatorAmazing.service.NumberChoiceService;
 import org.junit.jupiter.api.BeforeEach;

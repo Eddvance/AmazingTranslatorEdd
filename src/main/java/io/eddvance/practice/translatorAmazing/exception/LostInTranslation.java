@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.exceptions;
+package io.eddvance.practice.translatorAmazing.exception;
 
 public class LostInTranslation extends RuntimeException{
     public LostInTranslation() {

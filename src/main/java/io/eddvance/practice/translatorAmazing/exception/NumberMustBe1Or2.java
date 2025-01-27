@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.exceptions;
+package io.eddvance.practice.translatorAmazing.exception;
 
 public class NumberMustBe1Or2 extends RuntimeException {
     public NumberMustBe1Or2(int number) {

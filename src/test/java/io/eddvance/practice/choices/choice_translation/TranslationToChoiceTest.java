@@ -1,9 +1,9 @@
 package io.eddvance.practice.choices.choice_translation;
 
 import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
-import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
-import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
-import io.eddvance.practice.translatorAmazing.exceptions.NumberMustBe1Or2;
+import io.eddvance.practice.translatorAmazing.exception.NumberAskedCantNotBeEmpty;
+import io.eddvance.practice.translatorAmazing.exception.NumberAskedMustBeNumeric;
+import io.eddvance.practice.translatorAmazing.exception.NumberMustBe1Or2;
 import io.eddvance.practice.translatorAmazing.util.InputReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
