@@ -47,7 +47,7 @@ public class GermanTranslationRepository {
         germanTranslations.add("Dreißig");
     }
 
-    public List<String> getGermanTranslations() {
+    public List<String> getAll() {
         return Collections.unmodifiableList(germanTranslations);
     }
 }

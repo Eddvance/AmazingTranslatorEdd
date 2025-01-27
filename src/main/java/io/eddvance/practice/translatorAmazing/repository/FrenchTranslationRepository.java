@@ -47,7 +47,7 @@ public class FrenchTranslationRepository {
         frenchTranslations.add("Trente");
     }
 
-    public List<String> getFrenchTranslations() {
+    public List<String> getAll() {
         return Collections.unmodifiableList(frenchTranslations);
     }
 }

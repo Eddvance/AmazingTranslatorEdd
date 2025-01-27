@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class App implements CommandLineRunner {
 
-    private TranslatorConsoleController execut;
+    private TranslatorConsoleController controller;
 
-    public App(TranslatorConsoleController execut) {
-        this.execut = execut;
+    public App(TranslatorConsoleController controller) {
+        this.controller = controller;
     }
 
     public static void main(String[] args) {
@@ -20,6 +20,6 @@ public class App implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        execut.action();
+        controller.action();
     }
 }
