@@ -1,11 +1,9 @@
-package io.eddvance.practice.translation.translator;
-
-import io.eddvance.practice.interaction.InputReader;
+package io.eddvance.practice.translatorAmazing.translation.translator;
 
 import java.util.logging.Logger;
 
-import static io.eddvance.practice.translation.data.FrenchTranslation.getFrenchTranslations;
-import static io.eddvance.practice.translation.data.GermanTranslation.getGermanTranslations;
+import static io.eddvance.practice.translatorAmazing.translation.data.FrenchTranslation.getFrenchTranslations;
+import static io.eddvance.practice.translatorAmazing.translation.data.GermanTranslation.getGermanTranslations;
 
 public class SearchAndReturn {
 

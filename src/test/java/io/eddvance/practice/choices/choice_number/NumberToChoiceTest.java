@@ -1,9 +1,10 @@
 package io.eddvance.practice.choices.choice_number;
 
-import io.eddvance.practice.exceptions.NumberAskedCantNotBeEmpty;
-import io.eddvance.practice.exceptions.NumberAskedMustBe1to30;
-import io.eddvance.practice.exceptions.NumberAskedMustBeNumeric;
-import io.eddvance.practice.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
+import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBe1to30;
+import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
+import io.eddvance.practice.translatorAmazing.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.choices.choice_number.NumberToChoice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

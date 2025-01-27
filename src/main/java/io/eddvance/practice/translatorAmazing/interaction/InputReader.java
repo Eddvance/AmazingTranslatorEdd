@@ -1,4 +1,4 @@
-package io.eddvance.practice.interaction;
+package io.eddvance.practice.translatorAmazing.interaction;
 
 import java.util.Scanner;
 

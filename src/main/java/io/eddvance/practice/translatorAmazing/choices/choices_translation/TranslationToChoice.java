@@ -1,9 +1,9 @@
-package io.eddvance.practice.choices.choices_translation;
+package io.eddvance.practice.translatorAmazing.choices.choices_translation;
 
-import io.eddvance.practice.exceptions.NumberAskedCantNotBeEmpty;
-import io.eddvance.practice.exceptions.NumberAskedMustBeNumeric;
-import io.eddvance.practice.exceptions.NumberMustBe1Or2;
-import io.eddvance.practice.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedCantNotBeEmpty;
+import io.eddvance.practice.translatorAmazing.exceptions.NumberAskedMustBeNumeric;
+import io.eddvance.practice.translatorAmazing.exceptions.NumberMustBe1Or2;
+import io.eddvance.practice.translatorAmazing.interaction.InputReader;
 
 import java.util.logging.Logger;
 

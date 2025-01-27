@@ -1,4 +1,4 @@
-package io.eddvance.practice.translation.data;
+package io.eddvance.practice.translatorAmazing.translation.data;
 
 import java.util.ArrayList;
 import java.util.List;

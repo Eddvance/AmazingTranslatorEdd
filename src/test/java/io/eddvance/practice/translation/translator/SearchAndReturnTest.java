@@ -1,12 +1,9 @@
 package io.eddvance.practice.translation.translator;
 
-import io.eddvance.practice.interaction.InputReader;
+import io.eddvance.practice.translatorAmazing.translation.translator.SearchAndReturn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import static org.mockito.Mockito.when;
 
 public class SearchAndReturnTest {
     @Mock

@@ -1,4 +1,4 @@
-package io.eddvance.practice.exceptions;
+package io.eddvance.practice.translatorAmazing.exceptions;
 
 public class NumberAskedCantNotBeEmpty extends RuntimeException{
     public NumberAskedCantNotBeEmpty() {
