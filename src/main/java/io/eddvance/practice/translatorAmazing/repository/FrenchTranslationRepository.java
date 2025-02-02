@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.repository;
+/*package io.eddvance.practice.translatorAmazing.repository;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -51,3 +51,5 @@ public class FrenchTranslationRepository {
         return Collections.unmodifiableList(frenchTranslations);
     }
 }
+
+ */

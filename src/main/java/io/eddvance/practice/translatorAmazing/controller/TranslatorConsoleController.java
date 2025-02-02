@@ -7,7 +7,6 @@ import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
 import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
 import org.springframework.stereotype.Controller;
 
-
 import java.util.logging.Logger;
 
 @Controller

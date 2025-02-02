@@ -1,7 +1,6 @@
-package io.eddvance.practice.translatorAmazing.repository;
+/*package io.eddvance.practice.translatorAmazing.repository;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -51,3 +50,5 @@ public class GermanTranslationRepository {
         return Collections.unmodifiableList(germanTranslations);
     }
 }
+
+ */
