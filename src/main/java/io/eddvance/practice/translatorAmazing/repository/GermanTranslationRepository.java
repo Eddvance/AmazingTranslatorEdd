@@ -1,4 +1,4 @@
-/*package io.eddvance.practice.translatorAmazing.repository;
+package io.eddvance.practice.translatorAmazing.repository;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Repository;
@@ -50,5 +50,3 @@ public class GermanTranslationRepository {
         return Collections.unmodifiableList(germanTranslations);
     }
 }
-
- */
