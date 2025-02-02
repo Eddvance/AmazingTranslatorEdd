@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface TranslationRepository extends JpaRepository<Translation, Long> {
+public interface TranslationRepositoryInterface extends JpaRepository<Translation, Long> {
     List<Translation> findByLanguage(String language);
     List<Translation> findByLanguageOrderByPosition(String language);
     Translation findByLanguageAndPosition(String language, int position);
+    List<Translation> findByLanguageOrderByPositionAsc(String language);
 }

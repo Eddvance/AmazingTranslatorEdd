@@ -5,7 +5,7 @@ import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
 import io.eddvance.practice.translatorAmazing.util.InputReader;
 import io.eddvance.practice.translatorAmazing.repository.FrenchTranslationRepository;
 import io.eddvance.practice.translatorAmazing.repository.GermanTranslationRepository;
-import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
+import io.eddvance.practice.translatorAmazing.service.TranslationSearchServiceold;
 import io.eddvance.practice.translatorAmazing.controller.TranslatorConsoleController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class ExecutTest {
         InputReader mockReader = mock(InputReader.class);
         FrenchTranslationRepository mockFrenchTranslation = mock(FrenchTranslationRepository.class);
         GermanTranslationRepository mockGermanTranslation = mock(GermanTranslationRepository.class);
-        TranslationSearchService mockSearchAndReturn = mock(TranslationSearchService.class);
+        TranslationSearchServiceold mockSearchAndReturn = mock(TranslationSearchServiceold.class);
         LanguageChoiceService mockTranslationToChoice = mock(LanguageChoiceService.class);
         NumberChoiceService mockNumberToChoice = mock(NumberChoiceService.class);
 
@@ -76,7 +76,7 @@ class ExecutTest {
         verify(inputReaderMock, times(2)).readLine();
 
         // Vérifie qu'on a demandé deux traductions
-        TranslationSearchService searchAndReturnMock = (TranslationSearchService) getFieldValue(execut, "searchAndReturn");
+        TranslationSearchServiceold searchAndReturnMock = (TranslationSearchServiceold) getFieldValue(execut, "searchAndReturn");
         verify(searchAndReturnMock).getTranslation(5, 1);
         verify(searchAndReturnMock).getTranslation(30, 2);
     }

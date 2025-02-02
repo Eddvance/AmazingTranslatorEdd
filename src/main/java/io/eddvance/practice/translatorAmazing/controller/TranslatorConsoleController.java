@@ -1,9 +1,9 @@
-package io.eddvance.practice.translatorAmazing.controller;
+/*package io.eddvance.practice.translatorAmazing.controller;
 
 import io.eddvance.practice.App;
 import io.eddvance.practice.translatorAmazing.util.InputReader;
 import io.eddvance.practice.translatorAmazing.service.NumberChoiceService;
-import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
+import io.eddvance.practice.translatorAmazing.service.TranslationSearchServiceold;
 import io.eddvance.practice.translatorAmazing.service.LanguageChoiceService;
 import org.springframework.stereotype.Controller;
 
@@ -16,11 +16,11 @@ public class TranslatorConsoleController {
 
     private final InputReader inputReader;
 
-    private final TranslationSearchService searchAndReturn;
+    private final TranslationSearchServiceold searchAndReturn;
     private final LanguageChoiceService translationToChoice;
     private final NumberChoiceService numberToChoice;
 
-    public TranslatorConsoleController(InputReader inputReader, TranslationSearchService searchAndReturn, LanguageChoiceService translationToChoice, NumberChoiceService numberToChoice) {
+    public TranslatorConsoleController(InputReader inputReader, TranslationSearchServiceold searchAndReturn, LanguageChoiceService translationToChoice, NumberChoiceService numberToChoice) {
         this.inputReader = inputReader;
         this.searchAndReturn = searchAndReturn;
         this.translationToChoice = translationToChoice;
@@ -47,3 +47,5 @@ public class TranslatorConsoleController {
         return searchAndReturn.getTranslation(number, languageSelection);
     }
 }
+
+ */

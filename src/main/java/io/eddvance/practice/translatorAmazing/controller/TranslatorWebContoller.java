@@ -10,5 +10,4 @@ public class TranslatorWebContoller {
         System.out.println("La méthode display Home a été invoquée");
         return "translator";
     }
-
 }
