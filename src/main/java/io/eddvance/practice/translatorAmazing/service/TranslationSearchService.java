@@ -1,6 +1,6 @@
 package io.eddvance.practice.translatorAmazing.service;
 
-import io.eddvance.practice.translatorAmazing.entite.Translation;
+import io.eddvance.practice.translatorAmazing.entity_model.Translation;
 import io.eddvance.practice.translatorAmazing.repository.TranslationRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,28 +13,8 @@ public class TranslationSearchService {
         this.translationRepository = translationRepository;
     }
 
-
-    public String getFrenchWord(int position) {
-        Translation translation = translationRepository.findByLanguageAndPosition("FR", position);
-        return (translation != null) ? translation.getText() : null;
-    }
-
-
-    public String getGermanWord(int position) {
-        Translation translation = translationRepository.findByLanguageAndPosition("DE", position);
-        return (translation != null) ? translation.getText() : null;
-    }
-
-    /*public List<Translation> getAllGermanWords() {
-        return translationRepository.findByLanguageOrderByPositionAsc("DE");
-    }
-
-    public List<Translation> getAllFrenchWords() {
-        return translationRepository.findByLanguageOrderByPositionAsc("FR");
-    }
-    */
-
-    public Translation saveTranslation(Translation translation) {
-        return translationRepository.save(translation);
+    public String getTranslation(String language, int position) {
+        Translation tr = translationRepository.findByLanguageAndPosition(language, position);
+        return (tr != null) ? tr.getText() : null;
     }
 }

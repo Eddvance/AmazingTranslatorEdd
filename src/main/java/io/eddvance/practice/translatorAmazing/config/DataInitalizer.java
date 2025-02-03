@@ -1,6 +1,6 @@
-package io.eddvance.practice.translatorAmazing.util;
+package io.eddvance.practice.translatorAmazing.config;
 
-import io.eddvance.practice.translatorAmazing.entite.Translation;
+import io.eddvance.practice.translatorAmazing.entity_model.Translation;
 import io.eddvance.practice.translatorAmazing.repository.TranslationRepository;
 import org.springframework.boot.CommandLineRunner;
 
@@ -14,9 +14,7 @@ public class DataInitalizer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Vérifie si c'est vide
         if (translationRepository.count() == 0) {
-            // Insère tes traductions
             translationRepository.save(new Translation("FR", 1, "Un"));
             translationRepository.save(new Translation("FR", 2, "Deux"));
             // ...

@@ -1,11 +1,10 @@
 package io.eddvance.practice.translatorAmazing.repository;
 
-import io.eddvance.practice.translatorAmazing.entite.Translation;
+import io.eddvance.practice.translatorAmazing.entity_model.Translation;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+@Repository
 public interface TranslationRepository extends JpaRepository<Translation, Long> {
-    List<Translation> findByLanguageOrderByPositionAsc(String language);
     Translation findByLanguageAndPosition(String language, int position);
 }

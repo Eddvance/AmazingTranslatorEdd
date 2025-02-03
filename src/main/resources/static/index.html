@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Translation</title>
+</head>
+<body>
+
+<h1>Translate a number</h1>
+
+<div>
+    <label>Language (FR or DE):</label>
+    <input type="text" id="lang" placeholder="FR or DE" />
+</div>
+
+<div>
+    <label>Position (1-30):</label>
+    <input type="number" id="pos" min="1" max="30" />
+</div>
+
+<button onclick="makeRestCall()">Translate</button>
+
+<hr/>
+
+<div id="result"></div>
+
+<script>
+    async function makeRestCall() {
+        const language = document.getElementById('lang').value;
+        const position = document.getElementById('pos').value;
+
+        // On construit l'URL pour la requête GET REST
+        const url = `/api/translate?language=${language}&position=${position}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                document.getElementById('result').innerHTML =
+                    `Error: HTTP ${response.status}`;
+                return;
+            }
+            // On récupère le JSON (ex: { "text": "Un", "error": null })
+            const data = await response.json();
+
+            if (data.error) {
+                document.getElementById('result').innerHTML =
+                    `<b style="color:red">Error:</b> ${data.error}`;
+            } else {
+                document.getElementById('result').innerHTML =
+                    `<b>Translation:</b> ${data.text}`;
+            }
+        } catch (err) {
+            console.error(err);
+            document.getElementById('result').innerHTML =
+                `Exception: ${err.message}`;
+        }
+    }
+</script>
+
+</body>
+</html>
