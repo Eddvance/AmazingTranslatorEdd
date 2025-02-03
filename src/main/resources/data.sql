@@ -1,6 +1,3 @@
--- ===================
---    DONNEES FR
--- ===================
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (1, 'FR', 1, 'Un');
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (2, 'FR', 2, 'Deux');
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (3, 'FR', 3, 'Trois');
@@ -32,9 +29,8 @@ INSERT INTO TRANSLATION (id, language, position, text) VALUES (28, 'FR', 28, 'Vi
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (29, 'FR', 29, 'Vingt-neuf');
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (30, 'FR', 30, 'Trente');
 
--- ===================
---    DONNEES DE
--- ===================
+
+
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (31, 'DE', 1, 'Eins');
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (32, 'DE', 2, 'Zwei');
 INSERT INTO TRANSLATION (id, language, position, text) VALUES (33, 'DE', 3, 'Drei');

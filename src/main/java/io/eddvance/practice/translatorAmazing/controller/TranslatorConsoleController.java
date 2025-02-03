@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.controller;
+/*package io.eddvance.practice.translatorAmazing.controller;
 
 import io.eddvance.practice.App;
 import io.eddvance.practice.translatorAmazing.util.InputReader;
@@ -47,3 +47,5 @@ public class TranslatorConsoleController {
         return searchAndReturn.getTranslation(number, languageSelection);
     }
 }
+
+ */
