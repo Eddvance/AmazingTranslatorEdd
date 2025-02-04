@@ -13,14 +13,6 @@ public class DataInitalizer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
-        if (translationRepository.count() == 0) {
-            translationRepository.save(new Translation("FR", 1, "Un"));
-            translationRepository.save(new Translation("FR", 2, "Deux"));
-            // ...
-            translationRepository.save(new Translation("DE", 1, "Eins"));
-            translationRepository.save(new Translation("DE", 2, "Zwei"));
-            // ...
-        }
-    }
+    public void run(String... args) {}
+
 }
