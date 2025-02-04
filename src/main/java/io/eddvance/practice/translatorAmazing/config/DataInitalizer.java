@@ -1,6 +1,5 @@
 package io.eddvance.practice.translatorAmazing.config;
 
-import io.eddvance.practice.translatorAmazing.entity_model.Translation;
 import io.eddvance.practice.translatorAmazing.repository.TranslationRepository;
 import org.springframework.boot.CommandLineRunner;
 
@@ -13,6 +12,7 @@ public class DataInitalizer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {}
+    public void run(String... args) {
+    }
 
 }

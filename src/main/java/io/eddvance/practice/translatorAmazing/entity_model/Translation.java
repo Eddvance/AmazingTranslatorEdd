@@ -1,5 +1,8 @@
 package io.eddvance.practice.translatorAmazing.entity_model;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +15,11 @@ public class Translation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Language cannot be empty.")
+    @Size(min = 2, max = 2, message = "Language must be 2 characters.")
     private String language;
+    @NotBlank(message = "Cannot be empty.")
+    @Size(min = 1, max = 30, message = "Must be between 1 and 30 characters.")
     private int position;
     private String text;
 
