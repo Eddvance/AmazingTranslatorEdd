@@ -1,8 +1,8 @@
-package io.eddvance.practice.translatorAmazing.controller.api_rest;
+package io.eddvance.practice.translator_amazing.controller.api_rest.translation_resource;
 
 
-import io.eddvance.practice.translatorAmazing.controller.api_rest.dto.TranslationResponse;
-import io.eddvance.practice.translatorAmazing.service.TranslationSearchService;
+import io.eddvance.practice.translator_amazing.controller.api_rest.dto.TranslationResponse;
+import io.eddvance.practice.translator_amazing.service.TranslationService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class TranslatorResource {
-    private final TranslationSearchService translationSearchService;
+    private final TranslationService translationSearchService;
 
-    public TranslatorResource(TranslationSearchService translationSearchService) {
+    public TranslatorResource(TranslationService translationSearchService) {
         this.translationSearchService = translationSearchService;
     }
 

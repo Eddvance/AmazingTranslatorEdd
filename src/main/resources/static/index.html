@@ -37,7 +37,6 @@
                     `Error: HTTP ${response.status}`;
                 return;
             }
-            // On récupère le JSON (ex: { "text": "Un", "error": null })
             const data = await response.json();
 
             if (data.error) {

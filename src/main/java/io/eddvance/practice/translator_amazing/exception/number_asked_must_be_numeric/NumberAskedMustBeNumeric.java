@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.exception;
+package io.eddvance.practice.translator_amazing.exception.number_asked_must_be_numeric;
 
 public class NumberAskedMustBeNumeric extends RuntimeException {
 

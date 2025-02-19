@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.controller.api_rest.dto;
+package io.eddvance.practice.translator_amazing.controller.api_rest.dto;
 
 public class TranslationResponse {
     private String text;

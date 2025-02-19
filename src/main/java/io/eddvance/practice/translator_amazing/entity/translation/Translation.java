@@ -1,12 +1,11 @@
-package io.eddvance.practice.translatorAmazing.entity_model;
+package io.eddvance.practice.translator_amazing.entity.translation;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Translation {
@@ -23,7 +22,8 @@ public class Translation {
     private int position;
     private String text;
 
-    public Translation() {}
+    public Translation() {
+    }
 
     public Translation(String language, int position, String text) {
         this.language = language;
@@ -62,5 +62,4 @@ public class Translation {
     public void setText(String text) {
         this.text = text;
     }
-
 }

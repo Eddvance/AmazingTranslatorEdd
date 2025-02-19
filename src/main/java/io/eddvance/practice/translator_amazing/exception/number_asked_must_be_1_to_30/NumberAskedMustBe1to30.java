@@ -1,4 +1,4 @@
-package io.eddvance.practice.translatorAmazing.exception;
+package io.eddvance.practice.translator_amazing.exception.number_asked_must_be_1_to_30;
 
 public class NumberAskedMustBe1to30 extends RuntimeException {
     public NumberAskedMustBe1to30(int number) {
