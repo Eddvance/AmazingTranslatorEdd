@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #444;
+}
+
+.translations {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.translation-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.translation-item:last-child {
+    border-bottom: none;
+}
+
+.translation-item .original {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 14px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}

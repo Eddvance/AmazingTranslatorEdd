@@ -37,9 +37,7 @@ public class TranslationService implements TranslationServiceInterface {
     }
 
     @Override
-    public void deleteById(Long id) {
-        // TODO document why this method is empty
-    }
+    public void deleteById(Long id) {}
 
     @Override
     public Translation save(Translation translation) {
