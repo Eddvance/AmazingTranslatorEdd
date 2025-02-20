@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TranslationRepositoryInterface extends JpaRepository<Translation, Long> {
+public interface
+TranslationRepositoryInterface extends JpaRepository<Translation, Long> {
     Translation findByLanguageAndPosition(String language, int position);
 }

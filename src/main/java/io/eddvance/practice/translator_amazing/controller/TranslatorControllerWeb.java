@@ -1,7 +1,7 @@
 package io.eddvance.practice.translator_amazing.controller;
 
 import io.eddvance.practice.translator_amazing.entity.translation.Translation;
-import io.eddvance.practice.translator_amazing.service.TranslationService;
+import io.eddvance.practice.translator_amazing.service.TranslationServiceInterface;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +13,9 @@ import java.util.Optional;
 @RequestMapping("/translations")
 public class TranslatorControllerWeb {
 
-    private final TranslationService translationService;
+    private final TranslationServiceInterface translationService;
 
-    public TranslatorControllerWeb(TranslationService translationService) {
+    public TranslatorControllerWeb(TranslationServiceInterface translationService) {
         this.translationService = translationService;
     }
 
@@ -26,40 +26,15 @@ public class TranslatorControllerWeb {
         return "translations-list";
     }
 
-
     @GetMapping("/new")
     public String showCreateForm(Model model) {
         model.addAttribute("translation", new Translation());
         return "translation-form";
     }
 
-
     @PostMapping
     public String createTranslation(@ModelAttribute Translation translation) {
         translationService.createTranslation(translation);
-        return "redirect:/translations";
-    }
-
-
-    @GetMapping("/{id}/edit")
-    public String showEditForm(@PathVariable Long id, Model model) {
-        Optional<Translation> optionalTranslation = translationService.findById(id);
-        if (optionalTranslation.isPresent()) {
-            model.addAttribute("translation", optionalTranslation.get());
-            return "translation-form";
-        }
-        return "redirect:/translations";
-    }
-
-    @PostMapping("/{id}")
-    public String updateTranslation(@PathVariable Long id, @ModelAttribute Translation updatedTranslation) {
-        translationService.updateTranslation(id, updatedTranslation);
-        return "redirect:/translations";
-    }
-
-    @GetMapping("/{id}/delete")
-    public String deleteTranslation(@PathVariable Long id) {
-        translationService.deleteById(id);
         return "redirect:/translations";
     }
 }

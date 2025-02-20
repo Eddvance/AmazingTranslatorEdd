@@ -11,7 +11,6 @@ import java.util.Optional;
 public class TranslationService implements TranslationServiceInterface {
 
     private final TranslationRepositoryInterface translationRepository;
-
     public TranslationService(TranslationRepositoryInterface translationRepository) {
         this.translationRepository = translationRepository;
     }
