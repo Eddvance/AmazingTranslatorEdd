@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -20,17 +21,13 @@ public class TranslatorControllerWeb {
 
     @GetMapping
     public String listTranslations(Model model) {
-        // Récupération de toutes les traductions via la couche Service
         List<Translation> translations = translationService.findAll();
-        // Ajout de la liste au Model pour la vue
         model.addAttribute("translations", translations);
-        // Retourne le nom du template Thymeleaf
         return "translations-list";
     }
 
     @GetMapping("/new")
     public String showCreateForm(Model model) {
-        // On met une instance vide dans le modèle pour lier les champs du formulaire
         model.addAttribute("translation", new Translation());
         return "translation-form";
     }
@@ -61,7 +58,7 @@ public class TranslatorControllerWeb {
 
     @GetMapping("/{id}/delete")
     public String deleteTranslation(@PathVariable Long id) {
-        translationService.deleteTranslation(id);
+        translationService.deleteById(id);
         return "redirect:/translations";
     }
 }
