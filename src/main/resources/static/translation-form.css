@@ -1,23 +1,23 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
     color: #333;
 }
 
 .form-container {
     max-width: 600px;
-    margin: 40px auto;
     background-color: #fff;
     padding: 20px;
-    border-radius: 6px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.form-container h1 {
+h1 {
+    text-align: center;
     margin-bottom: 20px;
-    color: #444;
 }
 
 .form-group {
@@ -25,35 +25,36 @@ body {
 }
 
 .form-group label {
-    display: inline-block;
+    display: block;
+    font-weight: bold;
     margin-bottom: 5px;
-    font-weight: 600;
-    color: #555;
 }
 
-.form-group input[type="text"],
-.form-group input[type="number"] {
+.form-group input {
     width: 100%;
-    padding: 10px;
-    font-size: 1rem;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-top: 3px;
 }
 
-.btn {
-    display: inline-block;
-    text-decoration: none;
-    padding: 10px 16px;
+.error {
+    color: #d9534f;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
     background-color: #007BFF;
-    color: #fff;
-    font-size: 0.95rem;
     border: none;
     border-radius: 4px;
+    color: #fff;
+    font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
-.btn:hover {
+button:hover {
     background-color: #0056b3;
 }

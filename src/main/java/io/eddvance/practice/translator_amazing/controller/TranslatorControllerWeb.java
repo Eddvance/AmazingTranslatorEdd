@@ -4,10 +4,11 @@ import io.eddvance.practice.translator_amazing.entity.translation.Translation;
 import io.eddvance.practice.translator_amazing.service.TranslationServiceInterface;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/translations")
@@ -33,7 +34,10 @@ public class TranslatorControllerWeb {
     }
 
     @PostMapping
-    public String createTranslation(@ModelAttribute Translation translation) {
+    public String createTranslation(@Valid @ModelAttribute("translation") Translation translation, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "translation-form";
+        }
         translationService.createTranslation(translation);
         return "redirect:/translations";
     }
