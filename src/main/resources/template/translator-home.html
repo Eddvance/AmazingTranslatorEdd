@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Résultat de traduction</title>
+</head>
+<body>
+<h1>Résultat</h1>
+
+<p><strong>Texte traduit :</strong>
+  <span th:text="${response.translatedText}"></span>
+</p>
+<p><strong>Langue détectée :</strong>
+  <span th:text="${response.detectedSourceLanguage}"></span>
+</p>
+<p><strong>Confiance :</strong>
+  <span th:text="${response.confidence}"></span>
+</p>
+
+<a th:href="@{/translator}">Nouvelle traduction</a>
+</body>
+</html>

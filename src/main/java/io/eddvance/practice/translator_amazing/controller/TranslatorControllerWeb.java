@@ -26,6 +26,7 @@ public class TranslatorControllerWeb {
         return "translations-list";
     }
 
+
     @GetMapping("/new")
     public String showCreateForm(Model model) {
         model.addAttribute("translation", new Translation());
