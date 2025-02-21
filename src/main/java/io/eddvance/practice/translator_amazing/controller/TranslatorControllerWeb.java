@@ -2,43 +2,38 @@ package io.eddvance.practice.translator_amazing.controller;
 
 import io.eddvance.practice.translator_amazing.entity.translation.Translation;
 import io.eddvance.practice.translator_amazing.service.TranslationServiceInterface;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import jakarta.validation.Valid;
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/translations")
 public class TranslatorControllerWeb {
 
     private final TranslationServiceInterface translationService;
-
     public TranslatorControllerWeb(TranslationServiceInterface translationService) {
         this.translationService = translationService;
     }
 
-    @GetMapping
-    public String listTranslations(Model model) {
-        List<Translation> translations = translationService.findAll();
-        model.addAttribute("translations", translations);
-        return "translations-list";
-    }
-
-    @GetMapping("/new")
-    public String showCreateForm(Model model) {
+    @GetMapping("/search")
+    public String showSearchForm(Model model) {
         model.addAttribute("translation", new Translation());
-        return "translation-form";
+        return "translation-search";
     }
 
-    @PostMapping
-    public String createTranslation(@Valid @ModelAttribute("translation") Translation translation, BindingResult bindingResult) {
+    @PostMapping("/search")
+    public String processSearch(@Valid @ModelAttribute("translation") Translation translation, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "translation-form";
+            return "translation-search";
         }
-        translationService.createTranslation(translation);
-        return "redirect:/translations";
+        int number = translation.getNumber();
+        Translation result = translationService.findByNumber(number);
+        model.addAttribute("result", result);
+        return "translation-result";
     }
 }

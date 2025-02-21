@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Résultat de traduction</title>
+  <link rel="stylesheet" th:href="@{/css/translation-result.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Résultat de traduction</h1>
+  <div th:if="${result != null}">
+    <p><strong>Nombre :</strong> <span th:text="${result.number}"></span></p>
+    <p><strong>Français :</strong> <span th:text="${result.french}"></span></p>
+    <p><strong>Allemand :</strong> <span th:text="${result.german}"></span></p>
+  </div>
+  <div th:if="${result == null}">
+    <p>Aucune traduction trouvée pour le nombre spécifié.</p>
+  </div>
+  <a class="btn" th:href="@{/translations/search}">Nouvelle recherche</a>
+</div>
+</body>
+</html>

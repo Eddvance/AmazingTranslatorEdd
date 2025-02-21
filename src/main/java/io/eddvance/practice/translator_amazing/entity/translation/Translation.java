@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 @Entity
 public class Translation {
@@ -16,57 +15,51 @@ public class Translation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Language cannot be empty.")
-    @Size(min = 2, max = 2, message = "Language must be 2 characters.")
-    private String language;
+    @NotBlank
+    @Min(value = 1, message = "Le nombre doit être entre 1 et 30")
+    @Max(value = 30, message = "Le nombre doit être entre 1 et 30")
+    private int number;
 
-    @NotBlank(message = "Cannot be empty.")
-    @Min(value = 1, message = "Position must be at least 1")
-    @Max(value = 30, message = "Position must be at most 30")
-    private int position;
+    @NotBlank(message = "La traduction en français ne peut être vide.")
+    private String french;
 
-    @NotBlank(message = "Text cannot be empty.")
-    @Size(min = 1, max = 255, message = "Text must be between 1 and 255 characters.")
-    private String text;
+    @NotBlank(message = "La traduction en allemand ne peut être vide.")
+    private String german;
 
     public Translation() {
     }
 
-    public Translation(String language, int position, String text) {
-        this.language = language;
-        this.position = position;
-        this.text = text;
+    public Translation(int number, String french, String german) {
+        this.number = number;
+        this.french = french;
+        this.german = german;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public int getNumber() {
+        return number;
     }
 
-    public String getLanguage() {
-        return language;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public String getFrench() {
+        return french;
     }
 
-    public int getPosition() {
-        return position;
+    public void setFrench(String french) {
+        this.french = french;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
+    public String getGerman() {
+        return german;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public void setGerman(String german) {
+        this.german = german;
     }
 }

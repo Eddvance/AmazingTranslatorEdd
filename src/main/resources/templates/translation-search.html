@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recherche de traduction</title>
+  <link rel="stylesheet" th:href="@{/css/translation-search.css}" />
+</head>
+<body>
+<div class="container">
+  <h1>Rechercher une traduction</h1>
+  <form th:object="${translation}" th:action="@{/translations/search}" method="post">
+    <div class="form-group">
+      <label for="number">Entrez un nombre (1 à 30) :</label>
+      <input type="number" id="number" th:field="*{number}" min="1" max="30" required />
+      <div th:if="${#fields.hasErrors('number')}" class="error" th:errors="*{number}"></div>
+    </div>
+    <button type="submit">Rechercher</button>
+  </form>
+</div>
+</body>
+</html>
