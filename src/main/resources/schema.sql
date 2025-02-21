@@ -1,6 +1,8 @@
-CREATE TABLE IF NOT EXISTS TRANSLATION (
-                                           id INT PRIMARY KEY,
-                                           language VARCHAR(10),
-                                           position INT,
-                                           text VARCHAR(255)
+DROP TABLE IF EXISTS TRANSLATION;
+CREATE TABLE TRANSLATION
+(
+    id     BIGINT AUTO_INCREMENT PRIMARY KEY,
+    number INT          NOT NULL,
+    french VARCHAR(255) NOT NULL,
+    german VARCHAR(255) NOT NULL
 );
