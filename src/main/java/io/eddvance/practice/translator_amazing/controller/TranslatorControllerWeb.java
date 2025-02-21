@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/translations")
 public class TranslatorControllerWeb {
@@ -18,6 +20,13 @@ public class TranslatorControllerWeb {
     private final TranslationServiceInterface translationService;
     public TranslatorControllerWeb(TranslationServiceInterface translationService) {
         this.translationService = translationService;
+    }
+
+    @GetMapping("/list")
+    public String listTranslations(Model model) {
+        List<Translation> translations = translationService.findAll();
+        model.addAttribute("translations", translations);
+        return "translations-list";
     }
 
     @GetMapping("/search")
