@@ -5,6 +5,8 @@ import io.eddvance.practice.translator_amazing.entity.translation.Translation;
 import io.eddvance.practice.translator_amazing.repository.TranslationRepositoryInterface;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TranslationService implements TranslationServiceInterface {
 
@@ -21,5 +23,10 @@ public class TranslationService implements TranslationServiceInterface {
             throw new TranslationNotFoundException("Traduction pour le nombre " + number + " non trouvée");
         }
         return translation;
+    }
+
+    @Override
+    public List<Translation> findAll() {
+        return translationRepository.findAll();
     }
 }
