@@ -1,5 +1,6 @@
 package io.eddvance.practice.translator_amazing.service;
 
+import io.eddvance.practice.exception.TranslationNotFoundException;
 import io.eddvance.practice.translator_amazing.entity.translation.Translation;
 import io.eddvance.practice.translator_amazing.repository.TranslationRepositoryInterface;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class TranslationService implements TranslationServiceInterface {
 
     @Override
     public Translation findByNumber(int number) {
-        return translationRepository.findByNumber(number);
+        Translation translation = translationRepository.findByNumber(number);
+        if (translation == null) {
+            throw new TranslationNotFoundException("Traduction pour le nombre " + number + " non trouvée");
+        }
+        return translation;
     }
 }
