@@ -11,19 +11,34 @@
   <form id="searchForm">
     <div class="form-group">
       <label for="number">Entrez un nombre (1 à 30) :</label>
-      <input type="number" id="number" name="number" min="1" max="30" required>
+      <!-- Champ de texte libre pour saisir le nombre -->
+      <input type="text" id="number" name="number" placeholder="Ex. 10" required>
+      <div id="errorMessage" class="error"></div>
     </div>
     <button type="submit">Rechercher</button>
   </form>
+  <!-- Zone de résultat affichée sous forme de bannière -->
   <div id="resultContainer" class="banner"></div>
 </div>
 
 <script>
   document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Empêche le rechargement de la page
 
-    const numberValue = document.getElementById('number').value;
-    const payload = { number: parseInt(numberValue, 10) };
+    const numberField = document.getElementById('number');
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.textContent = ''; // Réinitialiser le message d'erreur
+
+    // Essayez de convertir la valeur saisie en entier
+    const numberValue = numberField.value.trim();
+    const parsedNumber = parseInt(numberValue, 10);
+
+    if (isNaN(parsedNumber)) {
+      errorMessage.textContent = 'Veuillez saisir un nombre valide.';
+      return;
+    }
+
+    const payload = { number: parsedNumber };
 
     fetch('/translations/search/json', {
       method: 'POST',
