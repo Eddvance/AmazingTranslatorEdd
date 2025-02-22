@@ -18,6 +18,11 @@ public class TranslatorControllerWeb {
         this.translationService = translationService;
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "translation-home";
+    }
+
     @GetMapping("/list")
     public String listTranslations(Model model) {
         List<Translation> translations = translationService.findAll();
