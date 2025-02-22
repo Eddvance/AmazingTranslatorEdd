@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultat de traduction</title>
+    <link rel="stylesheet" th:href="@{/css/translation-search.css}"/>
+</head>
+<body>
+<div class="result-banner">
+    <h2>Résultat de traduction</h2>
+    <p><strong>Nombre :</strong> <span th:text="${translation.number}"></span></p>
+    <p><strong>Français :</strong> <span th:text="${translation.french}"></span></p>
+    <p><strong>Allemand :</strong> <span th:text="${translation.german}"></span></p>
+    <button onclick="window.location.href='/translations/search'">Nouvelle recherche</button>
+</div>
+</body>
+</html>

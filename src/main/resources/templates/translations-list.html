@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Liste des traductions</title>
-  <link rel="stylesheet" th:href="@{/css/translations-list.css}" />
+    <meta charset="UTF-8"/>
+    <title>Liste des traductions</title>
+    <link rel="stylesheet" th:href="@{/css/translations-list.css}"/>
 </head>
 <body>
 <div class="container">
-  <h1>Liste des traductions</h1>
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Français</th>
-      <th>Allemand</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="translation : ${translations}">
-      <td th:text="${translation.id}">ID</td>
-      <td th:text="${translation.number}">Nombre</td>
-      <td th:text="${translation.french}">Français</td>
-      <td th:text="${translation.german}">Allemand</td>
-    </tr>
-    </tbody>
-  </table>
-  <a class="btn" th:href="@{/translations/search}">Rechercher une traduction</a>
+    <h1>Liste des traductions</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Français</th>
+            <th>Allemand</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="translation : ${translations}">
+            <td th:text="${translation.id}">ID</td>
+            <td th:text="${translation.number}">Nombre</td>
+            <td th:text="${translation.french}">Français</td>
+            <td th:text="${translation.german}">Allemand</td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn" th:href="@{/translations/search}">Rechercher une traduction</a>
 </div>
 </body>
 </html>
