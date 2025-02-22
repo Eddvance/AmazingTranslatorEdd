@@ -8,14 +8,51 @@
 <body>
 <div class="container">
   <h1>Rechercher une traduction</h1>
-  <form th:object="${translation}" th:action="@{/translations/search}" method="post">
+  <form id="searchForm">
     <div class="form-group">
       <label for="number">Entrez un nombre (1 à 30) :</label>
-      <input type="number" id="number" th:field="*{number}" min="1" max="30" required />
-      <div th:if="${#fields.hasErrors('number')}" class="error" th:errors="*{number}"></div>
+      <input type="number" id="number" name="number" min="1" max="30" required>
     </div>
     <button type="submit">Rechercher</button>
   </form>
+  <div id="resultContainer" class="banner"></div>
 </div>
+
+<script>
+  document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const numberValue = document.getElementById('number').value;
+    const payload = { number: parseInt(numberValue, 10) };
+
+    fetch('/translations/search/json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Erreur lors de la recherche');
+              }
+              return response.json();
+            })
+            .then(data => {
+              const container = document.getElementById('resultContainer');
+              if (data) {
+                container.innerHTML = `
+            <h2>Résultat de traduction</h2>
+            <p><strong>Nombre :</strong> ${data.number}</p>
+            <p><strong>Français :</strong> ${data.french}</p>
+            <p><strong>Allemand :</strong> ${data.german}</p>
+          `;
+              } else {
+                container.innerHTML = '<p>Aucune traduction trouvée pour le nombre spécifié.</p>';
+              }
+            })
+            .catch(error => {
+              document.getElementById('resultContainer').innerHTML = `<p>${error.message}</p>`;
+            });
+  });
+</script>
 </body>
 </html>

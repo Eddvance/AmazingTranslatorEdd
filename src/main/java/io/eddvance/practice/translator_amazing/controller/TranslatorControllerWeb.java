@@ -5,11 +5,7 @@ import io.eddvance.practice.translator_amazing.service.TranslationServiceInterfa
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,14 +31,10 @@ public class TranslatorControllerWeb {
         return "translation-search";
     }
 
-    @PostMapping("/search")
-    public String processSearch(@Valid @ModelAttribute("translation") Translation translation, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "translation-search";
-        }
+    @PostMapping(value = "/search/json", produces = "application/json")
+    @ResponseBody
+    public Translation processSearchJson(@Valid @RequestBody Translation translation) {
         int number = translation.getNumber();
-        Translation result = translationService.findByNumber(number);
-        model.addAttribute("result", result);
-        return "translation-result";
+        return translationService.findByNumber(number);
     }
 }
