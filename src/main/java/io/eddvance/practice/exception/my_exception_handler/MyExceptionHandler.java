@@ -1,6 +1,6 @@
 package io.eddvance.practice.exception.my_exception_handler;
 
-import io.eddvance.practice.exception.TranslationNotFoundException;
+import io.eddvance.practice.exception.translation_not_found_exception.TranslationNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

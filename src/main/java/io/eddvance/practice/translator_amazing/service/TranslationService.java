@@ -1,6 +1,6 @@
 package io.eddvance.practice.translator_amazing.service;
 
-import io.eddvance.practice.exception.TranslationNotFoundException;
+import io.eddvance.practice.exception.translation_not_found_exception.TranslationNotFoundException;
 import io.eddvance.practice.translator_amazing.entity.translation.Translation;
 import io.eddvance.practice.translator_amazing.repository.TranslationRepositoryInterface;
 import org.springframework.stereotype.Service;
