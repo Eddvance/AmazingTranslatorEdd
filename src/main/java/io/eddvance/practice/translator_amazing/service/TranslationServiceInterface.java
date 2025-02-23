@@ -8,4 +8,5 @@ public interface TranslationServiceInterface {
     Translation findByNumber(int number);
 
     List<Translation> findAll();
+
 }
