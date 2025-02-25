@@ -8,12 +8,12 @@ import org.springframework.web.ErrorResponse;
 
 public class TranslationNotFoundException extends RuntimeException implements ErrorResponse {
 
-    private final ProblemDetail body;
+    private final ProblemDetail problemDetail;
 
     public TranslationNotFoundException(int number) {
         super("No translation found for number " + number);
-        this.body = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, getMessage());
-        body.setTitle("Translation not found");
+        this.problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, getMessage());
+        problemDetail.setTitle("Translation not found");
     }
 
     @Override
@@ -23,6 +23,6 @@ public class TranslationNotFoundException extends RuntimeException implements Er
 
     @Override
     public ProblemDetail getBody() {
-        return body;
+        return problemDetail;
     }
 }
