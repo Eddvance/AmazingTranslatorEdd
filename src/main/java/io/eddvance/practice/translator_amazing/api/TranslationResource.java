@@ -26,11 +26,6 @@ public class TranslationResource {
     @GetMapping("/search/{number}")
     public ResponseEntity<?> searchByPath(@PathVariable("number") int number) {
         Translation found = translationService.findByNumber(number);
-        if (found != null) {
             return ResponseEntity.ok(found);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(STR."Traduction non trouvée pour le nombre \{number}");
-        }
     }
 }
