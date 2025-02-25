@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Recherche de traduction</title>
+    <!-- Lien CSS (Thymeleaf) -->
     <link rel="stylesheet" th:href="@{/css/translation-search.css}"/>
 </head>
 <body>
 <div class="container">
     <h1>Rechercher une traduction</h1>
+
     <form id="searchForm">
         <div class="form-group">
             <label for="number">Entrez un nombre (1 à 30) :</label>
@@ -15,37 +17,49 @@
         </div>
         <button type="submit">Rechercher</button>
     </form>
+
     <div id="resultContainer" class="banner"></div>
 </div>
 
 <script>
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
-        event.preventDefault();
+    document.getElementById('searchForm')
+        .addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        const numberField = document.getElementById('number');
-        const resultContainer = document.getElementById('resultContainer');
+            const numberField = document.getElementById('number');
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = '';
 
+            const numberValue = numberField.value.trim();
+            const parsedNumber = parseInt(numberValue, 10);
+            if (isNaN(parsedNumber)) {
+                resultContainer.innerHTML = `<p class="error">Veuillez saisir un nombre valide.</p>`;
+                return;
+            }
 
-        resultContainer.innerHTML = '';
-
-        const numberValue = numberField.value.trim();
-        const parsedNumber = parseInt(numberValue, 10);
-        if (isNaN(parsedNumber)) {
-            resultContainer.innerHTML = `<p class="error">Veuillez saisir un nombre valide.</p>`;
-            return;
-        }
-
-        fetch(`/translations/search/html/${parsedNumber}`, {
-            method: 'GET'
-        })
-            .then(response => response.text())
-            .then(html => {
-                resultContainer.innerHTML = html;
-            })
-            .catch(error => {
-                resultContainer.innerHTML = `<p class="error">${error.message}</p>`;
-            });
-    });
+            fetch(`/translations/search/html/${parsedNumber}`)
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw errorData;
+                        });
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    resultContainer.innerHTML = html;
+                })
+                .catch(error => {
+                    if (error.status && error.title && error.detail) {
+                        resultContainer.innerHTML = `
+                            <p class="error">Erreur ${error.status} : ${error.title}</p>
+                            <p>${error.detail}</p>
+                        `;
+                    } else {
+                        resultContainer.innerHTML = `<p class="error">${error.message || 'Une erreur est survenue'}</p>`;
+                    }
+                });
+        });
 </script>
 </body>
 </html>

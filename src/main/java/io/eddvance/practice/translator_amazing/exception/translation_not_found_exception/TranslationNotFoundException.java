@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.ErrorResponse;
 
-import java.net.URI;
 
 public class TranslationNotFoundException extends RuntimeException implements ErrorResponse {
 
@@ -15,8 +14,6 @@ public class TranslationNotFoundException extends RuntimeException implements Er
         super("No translation found for number " + number);
         this.body = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, getMessage());
         body.setTitle("Translation not found");
-        body.setType(URI.create("https://api.example.com/errors/not-found"));
-        body.setInstance(URI.create("/translations/" + number));
     }
 
     @Override

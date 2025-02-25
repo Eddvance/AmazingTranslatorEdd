@@ -2,7 +2,6 @@ package io.eddvance.practice.translator_amazing.api;
 
 import io.eddvance.practice.translator_amazing.entity.translation.Translation;
 import io.eddvance.practice.translator_amazing.service.TranslationServiceInterface;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
