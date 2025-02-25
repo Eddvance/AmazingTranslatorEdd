@@ -11,23 +11,21 @@
     <form id="searchForm">
         <div class="form-group">
             <label for="number">Entrez un nombre (1 à 30) :</label>
-            <!-- Champ de texte pour saisir le nombre -->
             <input type="text" id="number" name="number" placeholder="Ex. 10" required>
         </div>
         <button type="submit">Rechercher</button>
     </form>
-    <!-- Zone de résultat qui affichera le fragment HTML (résultat ou erreur) -->
     <div id="resultContainer" class="banner"></div>
 </div>
 
 <script>
     document.getElementById('searchForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Empêche le rechargement de la page
+        event.preventDefault();
 
         const numberField = document.getElementById('number');
         const resultContainer = document.getElementById('resultContainer');
 
-        // Réinitialiser le conteneur de résultat
+
         resultContainer.innerHTML = '';
 
         const numberValue = numberField.value.trim();
@@ -37,7 +35,6 @@
             return;
         }
 
-        // Appel vers l'endpoint qui renvoie un fragment HTML (résultat ou erreur)
         fetch(`/translations/search/html/${parsedNumber}`, {
             method: 'GET'
         })

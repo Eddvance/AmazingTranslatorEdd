@@ -20,7 +20,7 @@ public class TranslationService implements TranslationServiceInterface {
     public Translation findByNumber(int number) {
         Translation translation = translationRepository.findByNumber(number);
         if (translation == null) {
-            throw new TranslationNotFoundException(STR."Traduction pour le nombre \{number} non trouvée");
+            throw new TranslationNotFoundException("Traduction pour le nombre "+number+ "non trouvée");
         }
         return translation;
     }
