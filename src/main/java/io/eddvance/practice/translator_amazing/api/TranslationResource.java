@@ -30,7 +30,7 @@ public class TranslationResource {
             return ResponseEntity.ok(found);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Traduction non trouvée pour le nombre " + number);
+                    .body(STR."Traduction non trouvée pour le nombre \{number}");
         }
     }
 }
