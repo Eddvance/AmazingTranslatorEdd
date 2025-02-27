@@ -3,17 +3,11 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Recherche</title>
-    <!-- Lien vers la feuille de style (à adapter selon ton projet) -->
     <link rel="stylesheet" href="/css/translation-search.css">
 </head>
 <body>
 <h1>Rechercher une traduction</h1>
 
-<!--
-    Formulaire utilisant un champ texte.
-    On ne restreint pas la saisie côté client :
-    si l’utilisateur saisit par ex. '50', c’est le serveur qui renverra une erreur.
--->
 <form id="searchForm">
     <label for="numberInput">Numéro :</label>
     <input
@@ -26,48 +20,56 @@
     <button type="submit">Rechercher</button>
 </form>
 
-<!--
-    Conteneur où l’on affichera soit le résultat (en cas de succès),
-    soit un message d’erreur (en cas de numéro invalide ou hors bornes).
--->
 <div id="resultContainer"></div>
 
 <script>
-    // Au submit, on empêche l’envoi classique du formulaire,
-    // puis on fait un appel AJAX (fetch) vers le serveur.
     document.getElementById('searchForm').addEventListener('submit', function(event) {
         event.preventDefault();
 
         const numberValue = document.getElementById('numberInput').value.trim();
         const resultDiv = document.getElementById('resultContainer');
 
-        // On peut vider d’abord le conteneur en cas de nouvelle recherche
+        // On réinitialise le contenu
         resultDiv.innerHTML = '';
 
-        // Requête GET asynchrone vers /translations/search/html/{number}
+        // Effectue la requête GET asynchrone vers /translations/search/html/{number}
         fetch('/translations/search/html/' + numberValue)
             .then(response => {
-                if (!response.ok) {
-                    // En cas d’erreur (404, 400, etc.), on récupère le texte retourné
-                    return response.text().then(errorText => {
-                        // Affichage d’un message d’erreur dans la même zone
-                        resultDiv.innerHTML = '<p style="color:red;">Erreur : '
-                            + errorText + '</p>';
-                        // Pour stopper le .then principal, on lance une exception
+                if (response.ok) {
+                    // Cas succès -> le serveur renvoie peut-être du HTML
+                    return response.text().then(resultHtml => {
+                        // On affiche le résultat HTML dans la même div
+                        resultDiv.innerHTML = resultHtml;
+                    });
+                } else {
+                    // Cas erreur -> on veut afficher la réponse au format JSON
+                    // Récupérons les en-têtes pour simuler "HTTP/1.1 404" etc.
+                    const statusLine = `HTTP/1.1 ${response.status}`;
+                    const contentType = response.headers.get('Content-Type')
+                        || 'application/json;charset=UTF-8';
+                    // On essaie de récupérer la date renvoyée par le serveur (pas toujours présente)
+                    let dateHeader = response.headers.get('Date');
+                    if (!dateHeader) {
+                        // On fabrique une date "proche" du comportement
+                        dateHeader = new Date().toUTCString();
+                    }
+
+                    return response.json().then(errorJson => {
+                        // On affiche le tout dans un <pre> pour formater
+                        resultDiv.innerHTML = `
+<pre>
+${statusLine}
+Content-Type: ${contentType}
+Date: ${dateHeader}
+
+${JSON.stringify(errorJson, null, 2)}
+</pre>
+`;
                         throw new Error('HTTP error ' + response.status);
                     });
                 }
-                // Sinon, on lit la réponse en texte
-                return response.text();
-            })
-            .then(resultHtml => {
-                // Cas succès : le serveur peut renvoyer du HTML
-                // (exemple : le snippet Thymeleaf 'translation-result')
-                // qu’on injecte dans le conteneur
-                resultDiv.innerHTML = resultHtml;
             })
             .catch(err => {
-                // Pour le debug : log de l’erreur en console
                 console.error(err);
             });
     });

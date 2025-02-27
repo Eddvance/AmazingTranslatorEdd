@@ -1,72 +1,121 @@
+/* ======================= */
+/*  translation-search.css */
+/* ======================= */
+
+/* Même couleur de fond que translation-home et mêmes réglages de base */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #607D8B;
     margin: 0;
-    padding: 20px;
-    color: #fff;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8; /* identique à home */
+    color: #333;              /* idem */
+    font-family: sans-serif;
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #CFD8DC;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    color: #000;
+/* Titre principal, même style qu’à home *//* ======================= */
+/*  translation-search.css */
+/* ======================= */
+
+/* Couleur de fond identique à home */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;                /* pleine hauteur */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;    /* même couleur qu'à home */
+    color: #333;                  /* même couleur de texte */
+    font-family: sans-serif;      /* idem */
 }
 
+/* Même style de titre qu'à home */
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #37474F;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #333;   /* si la home utilise #333 pour le titre */
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* Formulaire centré, champ + bouton côte à côte (sans restrictions) */
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #37474F;
-}
-
+/* Champ texte, aucune restriction côté client, style identique */
 input[type="text"] {
-    width: 100%;
     padding: 8px;
-    box-sizing: border-box;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    width: 200px;
+    color: #333;    /* même palette */
+    background-color: #fff;
 }
 
-.error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 5px;
-}
-
+/* Bouton : même apparence (fond gris clair, texte #333) */
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
     border-radius: 4px;
-    font-size: 1em;
     cursor: pointer;
+    background-color: #e5e5e5; /* même gris que home */
+    color: #333;
+    border: 1px solid #ccc;
 }
 
-button:hover {
-    background-color: #0056b3;
-}
-
-.banner {
-    background-color: #78909C;
-    border: 1px solid #007BFF;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 5px;
+/* Zone de résultat ou message, centrée, même couleur de base */
+#resultContainer {
+    margin-top: 2rem;
     text-align: center;
-    font-size: 1.1em;
-    color: #fff;
+    color: #333;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+/* Formulaire centré, champ + bouton côte à côte */
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* espace entre le champ et le bouton */
+}
+
+/* Champ texte sans restriction, mêmes couleurs globales */
+input[type="text"] {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    width: 200px;
+    color: #333;
+}
+
+/* Même style de bouton que home */
+button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #e5e5e5;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+/* Zone où afficher le résultat ou l’erreur (centrée) */
+#resultContainer {
+    margin-top: 2rem;
+    text-align: center;
+    color: #333;
 }
