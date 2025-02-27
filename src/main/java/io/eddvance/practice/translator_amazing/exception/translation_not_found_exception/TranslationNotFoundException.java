@@ -1,28 +1,28 @@
 package io.eddvance.practice.translator_amazing.exception.translation_not_found_exception;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
-import org.springframework.web.ErrorResponse;
+import org.springframework.web.server.ResponseStatusException;
 
 
-public class TranslationNotFoundException extends RuntimeException implements ErrorResponse {
+public class TranslationNotFoundException extends ResponseStatusException {
 
-    private final ProblemDetail problemDetail;
-
-    public TranslationNotFoundException(int number) {
-        super("No translation found for number " + number);
-        this.problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, getMessage());
-        problemDetail.setTitle("Translation not found");
+    public TranslationNotFoundException(HttpStatusCode status) {
+        super(status);
     }
 
-    @Override
-    public HttpStatusCode getStatusCode() {
-        return HttpStatus.NOT_FOUND;
+    public TranslationNotFoundException(HttpStatusCode status, String reason) {
+        super(status, reason);
     }
 
-    @Override
-    public ProblemDetail getBody() {
-        return problemDetail;
+    public TranslationNotFoundException(int rawStatusCode, String reason, Throwable cause) {
+        super(rawStatusCode, reason, cause);
+    }
+
+    public TranslationNotFoundException(HttpStatusCode status, String reason, Throwable cause) {
+        super(status, reason, cause);
+    }
+
+    protected TranslationNotFoundException(HttpStatusCode status, String reason, Throwable cause, String messageDetailCode, Object[] messageDetailArguments) {
+        super(status, reason, cause, messageDetailCode, messageDetailArguments);
     }
 }
