@@ -21,7 +21,6 @@ public class TranslationResource {
         return translationService.findAll();
     }
 
-
     @GetMapping("/search/{number}")
     public ResponseEntity<?> searchByPath(@PathVariable("number") int number) {
         Translation found = translationService.findByNumber(number);

@@ -1,0 +1,66 @@
+body {
+    background-color: #e6e6e6; /* gris clair électrique */
+    font-family: sans-serif;
+    margin: 2rem;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Balisage du formulaire et des boutons */
+form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+button {
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border: 1px solid #888;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #dddddd;
+}
+
+/* Zone de la traduction sélectionnée */
+#selectedTranslation {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}
+
+.translation-card {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+/* Tableau pour la liste complète */
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #fff;
+}
+
+thead tr {
+    background-color: #ccc;
+}
+
+th, td {
+    border: 1px solid #888;
+    padding: 0.5rem;
+    text-align: left;
+}
