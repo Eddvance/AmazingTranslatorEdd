@@ -7,12 +7,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class HistoriqueServ {
 
-    private final RestTemplate restTemplate;
+    private final RestTemplate restTemplate = new RestTemplate();
     private final String historiqueServiceUrl = "http://localhost:804/historique/add";
-
-    public HistoriqueServ(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
 
     public void addHistorique(HistoriqueDto historiqueDto) {
         restTemplate.postForObject(historiqueServiceUrl, historiqueDto, String.class);
