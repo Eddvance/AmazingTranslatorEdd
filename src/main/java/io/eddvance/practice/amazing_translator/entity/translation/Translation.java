@@ -15,7 +15,6 @@ public class Translation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Min(value = 1, message = "Le nombre doit être entre 1 et 30")
     @Max(value = 30, message = "Le nombre doit être entre 1 et 30")
     private int number;
