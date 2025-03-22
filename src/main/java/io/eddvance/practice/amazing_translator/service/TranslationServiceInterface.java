@@ -1,6 +1,6 @@
-package io.eddvance.practice.translator_amazing.service;
+package io.eddvance.practice.amazing_translator.service;
 
-import io.eddvance.practice.translator_amazing.entity.translation.Translation;
+import io.eddvance.practice.amazing_translator.entity.translation.Translation;
 
 import java.util.List;
 

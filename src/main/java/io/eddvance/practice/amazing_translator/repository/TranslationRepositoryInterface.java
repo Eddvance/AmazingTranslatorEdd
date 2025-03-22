@@ -1,6 +1,6 @@
-package io.eddvance.practice.translator_amazing.repository;
+package io.eddvance.practice.amazing_translator.repository;
 
-import io.eddvance.practice.translator_amazing.entity.translation.Translation;
+import io.eddvance.practice.amazing_translator.entity.translation.Translation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

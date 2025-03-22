@@ -1,7 +1,7 @@
-package io.eddvance.practice.translator_amazing.service;
+package io.eddvance.practice.amazing_translator.service;
 
-import io.eddvance.practice.translator_amazing.entity.translation.Translation;
-import io.eddvance.practice.translator_amazing.repository.TranslationRepositoryInterface;
+import io.eddvance.practice.amazing_translator.entity.translation.Translation;
+import io.eddvance.practice.amazing_translator.repository.TranslationRepositoryInterface;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

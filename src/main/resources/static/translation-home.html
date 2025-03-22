@@ -2,141 +2,62 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Traductions : liste + choix de langue</title>
-    <link rel="stylesheet" href="translation-home.css">
+    <title>Traduction & Historique</title>
+    <style>
+        body { font-family: sans-serif; margin:2rem; }
+        form { display: flex; gap: 1rem; align-items: center; }
+        label { font-weight: bold; }
+        button { padding: 0.4rem 0.8rem; cursor: pointer; }
+    </style>
 </head>
 <body>
-<h1>Traductions : liste complète et recherche par langue</h1>
 
-<!-- Bouton pour la liste complète -->
-<button type="button" id="btnList">Afficher la liste complète</button>
+<h1>Traduction & Historique</h1>
+<form id="monForm">
+    <label for="nombre">Nombre :</label>
+    <input type="number" min="1" id="nombre" required>
 
-<!-- Tableau pour la liste complète -->
-<table id="translationTable">
-    <thead>
-    <tr>
-        <th>Numéro</th>
-        <th>Français</th>
-        <th>Allemand</th>
-    </tr>
-    </thead>
-    <tbody id="translationTableBody">
-    <!-- Contenu généré dynamiquement -->
-    </tbody>
-</table>
-
-<hr>
-
-<h2>Recherche par numéro + langue</h2>
-<form id="searchForm">
-    <label for="searchNumber">Numéro :</label>
-    <input type="number" id="searchNumber" min="1" required />
-
-    <label for="langSelect">Langue :</label>
-    <select id="langSelect">
-        <option value="fr">Français</option>
-        <option value="de">Allemand</option>
+    <label for="langue">Langue :</label>
+    <select id="langue">
+        <option value="FR">FR</option>
+        <option value="DE">DE</option>
     </select>
 
-    <button type="submit">Chercher</button>
+    <button type="submit">Enregistrer</button>
 </form>
 
-<!-- Zone d'affichage de la traduction recherchée -->
-<div id="selectedTranslation"></div>
+<div id="resultat" style="margin-top:1rem; color:green;"></div>
+<div id="erreur" style="margin-top:1rem; color:red;"></div>
 
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const btnList = document.getElementById('btnList');
-        const translationTableBody = document.getElementById('translationTableBody');
+    document.getElementById('monForm').addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        const searchForm = document.getElementById('searchForm');
-        const searchNumberInput = document.getElementById('searchNumber');
-        const langSelect = document.getElementById('langSelect');
-        const selectedTranslationDiv = document.getElementById('selectedTranslation');
+        const nombre = document.getElementById('nombre').value;
+        const langue = document.getElementById('langue').value;
 
-        // 1) Afficher la liste complète (fr+de)
-        btnList.addEventListener('click', () => {
-            fetch("/translations/api/translations/list")
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Erreur HTTP: " + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // On vide le tableau
-                    translationTableBody.innerHTML = '';
-
-                    data.forEach(item => {
-                        const tr = document.createElement('tr');
-
-                        // Numéro
-                        const tdNumber = document.createElement('td');
-                        tdNumber.textContent = item.number;
-                        tr.appendChild(tdNumber);
-
-                        // Français
-                        const tdFrench = document.createElement('td');
-                        tdFrench.textContent = item.french ?? 'N/A';
-                        tr.appendChild(tdFrench);
-
-                        // Allemand
-                        const tdGerman = document.createElement('td');
-                        tdGerman.textContent = item.german ?? 'N/A';
-                        tr.appendChild(tdGerman);
-
-                        translationTableBody.appendChild(tr);
-                    });
-                })
-                .catch(error => {
-                    translationTableBody.innerHTML = '';
-                    const tr = document.createElement('tr');
-                    const tdError = document.createElement('td');
-                    tdError.colSpan = 3;
-                    tdError.style.color = 'red';
-                    tdError.textContent = error.message;
-                    tr.appendChild(tdError);
-                    translationTableBody.appendChild(tr);
-                });
-        });
-
-        // 2) Recherche par numéro + langue choisie (fr ou de)
-        searchForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-
-            const numberToSearch = searchNumberInput.value;
-            const selectedLang = langSelect.value;
-
-            // On appelle l’URL existante "/search/{number}" (déjà définie sur le serveur)
-            const url = `/translations/api/translations/search/${numberToSearch}`;
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("Aucune traduction trouvée ou erreur HTTP: " + response.status);
-                    }
-                    // On récupère l'objet JSON complet
-                    return response.json();
-                })
-                .then(data => {
-                    // On choisit le champ à afficher selon la langue sélectionnée
-                    let translationText;
-                    if (selectedLang === 'fr') {
-                        translationText = data.french;
-                    } else {
-                        translationText = data.german;
-                    }
-
-                    // Affichage
-                    selectedTranslationDiv.innerHTML = '';
-                    const p = document.createElement('p');
-                    p.textContent = `Traduction (${selectedLang}) : ${translationText}`;
-                    selectedTranslationDiv.appendChild(p);
-                })
-                .catch(error => {
-                    selectedTranslationDiv.innerHTML = `<p style="color:red;">${error.message}</p>`;
-                });
-        });
+        // Exemple d’appel au microservice principal sur le port 803
+        fetch('http://localhost:803/translations/api/traduire', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre, langue })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur HTTP ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // data contiendra un objet JSON renvoyant la traduction ou un message
+                document.getElementById('resultat').textContent =
+                    'Traduction : ' + (data.translation || 'Aucune');
+                document.getElementById('erreur').textContent = '';
+            })
+            .catch(error => {
+                document.getElementById('resultat').textContent = '';
+                document.getElementById('erreur').textContent = error;
+            });
     });
 </script>
 </body>

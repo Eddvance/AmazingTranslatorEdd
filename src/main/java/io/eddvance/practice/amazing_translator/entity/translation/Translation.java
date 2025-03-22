@@ -1,4 +1,4 @@
-package io.eddvance.practice.translator_amazing.entity.translation;
+package io.eddvance.practice.amazing_translator.entity.translation;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

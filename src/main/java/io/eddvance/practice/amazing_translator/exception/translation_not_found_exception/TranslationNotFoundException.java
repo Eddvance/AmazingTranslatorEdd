@@ -1,4 +1,4 @@
-package io.eddvance.practice.translator_amazing.exception.translation_not_found_exception;
+package io.eddvance.practice.amazing_translator.exception.translation_not_found_exception;
 
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.server.ResponseStatusException;
