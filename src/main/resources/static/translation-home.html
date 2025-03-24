@@ -36,9 +36,8 @@
         const nombre = document.getElementById('nombre').value;
         const langue = document.getElementById('langue').value;
 
-        // Exemple d’appel au microservice principal sur le port 803
-        fetch('http://localhost:803/translations/api/traduire', {
-            method: 'POST',
+        fetch('http://localhost:803/translations/api/translations/search/{number}', {
+            method: 'GET',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ nombre, langue })
         })
@@ -53,6 +52,16 @@
                 document.getElementById('resultat').textContent =
                     'Traduction : ' + (data.translation || 'Aucune');
                 document.getElementById('erreur').textContent = '';
+
+                return fetch('http://localhost:804/historique/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nombre: parseInt(nombre),
+                        langue: langue,
+                        dateRecherche: new Date().toISOString()
+                    })
+                });
             })
             .catch(error => {
                 document.getElementById('resultat').textContent = '';

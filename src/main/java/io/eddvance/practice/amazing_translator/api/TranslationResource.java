@@ -14,13 +14,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/translations")
+
 public class TranslationResource {
     private final TranslationServiceInterface translationService;
-
     public TranslationResource(TranslationServiceInterface translationService) {
         this.translationService = translationService;
     }
 
+
+    @GetMapping("/home")
+    public String home() {
+        return "welcome";
+    }
+
+    )
     @GetMapping("/list")
     public List<Translation> getAll() {
         return translationService.findAll();

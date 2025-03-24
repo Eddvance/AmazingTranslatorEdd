@@ -5,10 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @EnableAsync
-@SpringBootApplication
-public class Run {
+@SpringBootApplication(scanBasePackages = "io.eddvance.practice.amazing_translator")
+public class AmazingTranslatorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Run.class, args);
+        SpringApplication.run(AmazingTranslatorApplication.class, args);
     }
+
 }
