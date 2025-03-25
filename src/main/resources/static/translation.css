@@ -1,0 +1,120 @@
+body {
+    font-family: sans-serif;
+    margin: 2rem;
+    background-color: #e8f0fe; /* Fond bleuté électrique clair */
+    color: #333;
+}
+
+h1 {
+    color: #1a5276; /* Bleu foncé pour les titres */
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #85c1e9;
+    padding-bottom: 0.5rem;
+}
+
+form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    color: #2874a6;
+}
+
+input, select {
+    padding: 0.5rem;
+    border: 1px solid #aed6f1;
+    border-radius: 4px;
+    background-color: white;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+#historique-container {
+    margin-top: 2rem;
+    display: none;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#historique-container h2 {
+    color: #1a5276;
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+thead tr {
+    background-color: #3498db;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #d6eaf8;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #ebf5fb;
+}
+
+#resultat {
+    margin-top: 1rem;
+    color: #27ae60;
+    font-weight: bold;
+    background-color: #eafaf1;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border-left: 4px solid #2ecc71;
+}
+
+#erreur {
+    margin-top: 1rem;
+    color: #c0392b;
+    font-weight: bold;
+    background-color: #fdedec;
+    padding: 0.75rem;
+    border-radius: 4px;
+    border-left: 4px solid #e74c3c;
+}
+
+#afficher-historique {
+    margin-top: 1rem;
+    background-color: #2874a6;
+    color: white;
+    border: none;
+}
+
+#afficher-historique:hover {
+    background-color: #1a5276;
+}

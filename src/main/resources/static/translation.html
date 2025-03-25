@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Traduction & Historique</title>
+    <link rel="stylesheet" href="translation.css">
+</head>
+<body>
+
+<h1>Traduction & Historique</h1>
+<form id="monForm">
+    <label for="nombre">Nombre :</label>
+    <input type="number" min="1" id="nombre" required>
+
+    <label for="langue">Langue :</label>
+    <select id="langue">
+        <option value="FR">FR</option>
+        <option value="DE">DE</option>
+    </select>
+
+    <button type="submit">afficher</button>
+</form>
+
+<div id="resultat" style="margin-top:1rem; color:green;"></div>
+<div id="erreur" style="margin-top:1rem; color:red;"></div>
+
+<button id="afficher-historique" style="margin-top:1rem;">Afficher l'historique</button>
+
+<div id="historique-container">
+    <h2>Historique des recherches</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Langue</th>
+            <th>Date et heure</th>
+        </tr>
+        </thead>
+        <tbody id="historique-body">
+        <!-- Les données d'historique seront insérées ici -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    document.getElementById('monForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nombre = document.getElementById('nombre').value;
+        const langue = document.getElementById('langue').value;
+
+        // Appel au microservice de traduction
+        fetch(`http://localhost:803/translations/api/translations/search/${nombre}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur HTTP ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Sélectionner la traduction en fonction de la langue
+                let traduction = '';
+                if (data) {
+                    traduction = langue === 'FR' ? data.french : data.german;
+                }
+
+                document.getElementById('resultat').textContent =
+                    'Traduction : ' + (traduction || 'Aucune');
+                document.getElementById('erreur').textContent = '';
+
+                // Enregistrement silencieux dans l'historique
+                fetch('http://localhost:804/historique/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nombre: parseInt(nombre),
+                        langue: langue,
+                        dateRecherche: new Date().toISOString()
+                    })
+                })
+                    .catch(error => {
+                        console.error('Erreur lors de l\'enregistrement de l\'historique:', error);
+                    });
+            })
+            .catch(error => {
+                document.getElementById('resultat').textContent = '';
+                document.getElementById('erreur').textContent = error;
+            });
+    });
+
+    // Gérer l'affichage de l'historique
+    document.getElementById('afficher-historique').addEventListener('click', () => {
+        const historiqueContainer = document.getElementById('historique-container');
+
+        // Si l'historique est caché, on le charge et l'affiche
+        if (historiqueContainer.style.display === 'none' || !historiqueContainer.style.display) {
+            chargerHistorique();
+            historiqueContainer.style.display = 'block';
+            document.getElementById('afficher-historique').textContent = 'Masquer l\'historique';
+        } else {
+            // Sinon on le cache
+            historiqueContainer.style.display = 'none';
+            document.getElementById('afficher-historique').textContent = 'Afficher l\'historique';
+        }
+    });
+
+    // Fonction pour charger l'historique
+    function chargerHistorique() {
+        fetch('http://localhost:804/historique/list', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur HTTP ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const historiqueBody = document.getElementById('historique-body');
+                historiqueBody.innerHTML = ''; // Vider le tableau
+
+                // Remplir le tableau avec les données
+                data.forEach(item => {
+                    const row = document.createElement('tr');
+
+                    const nombreCell = document.createElement('td');
+                    nombreCell.textContent = item.nombre;
+                    row.appendChild(nombreCell);
+
+                    const langueCell = document.createElement('td');
+                    langueCell.textContent = item.langue;
+                    row.appendChild(langueCell);
+
+                    const dateCell = document.createElement('td');
+                    const date = new Date(item.dateRecherche);
+                    dateCell.textContent = date.toLocaleString();
+                    row.appendChild(dateCell);
+
+                    historiqueBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement de l\'historique:', error);
+                alert('Impossible de charger l\'historique: ' + error.message);
+            });
+    }
+</script>
+</body>
+</html>

@@ -27,7 +27,6 @@ public class TranslationResource {
         return "welcome";
     }
 
-    )
     @GetMapping("/list")
     public List<Translation> getAll() {
         return translationService.findAll();
