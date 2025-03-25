@@ -1,4 +1,4 @@
-package io.eddvance.practice.amazing_translator.dto;
+package io.eddvance.practice.amazing_translator.entity.historique_dto;
 
 import java.time.LocalDateTime;
 

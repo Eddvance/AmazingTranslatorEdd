@@ -101,7 +101,6 @@
         }
     });
 
-    // Fonction pour charger l'historique
     function chargerHistorique() {
         fetch('http://localhost:804/historique/list', {
             method: 'GET',
@@ -119,25 +118,36 @@
                 const historiqueBody = document.getElementById('historique-body');
                 historiqueBody.innerHTML = ''; // Vider le tableau
 
-                // Remplir le tableau avec les données
-                data.forEach(item => {
+                if (data.length === 0) {
+                    // Afficher un message si l'historique est vide
                     const row = document.createElement('tr');
-
-                    const nombreCell = document.createElement('td');
-                    nombreCell.textContent = item.nombre;
-                    row.appendChild(nombreCell);
-
-                    const langueCell = document.createElement('td');
-                    langueCell.textContent = item.langue;
-                    row.appendChild(langueCell);
-
-                    const dateCell = document.createElement('td');
-                    const date = new Date(item.dateRecherche);
-                    dateCell.textContent = date.toLocaleString();
-                    row.appendChild(dateCell);
-
+                    const cell = document.createElement('td');
+                    cell.colSpan = 3;
+                    cell.textContent = 'Aucun historique disponible';
+                    cell.style.textAlign = 'center';
+                    row.appendChild(cell);
                     historiqueBody.appendChild(row);
-                });
+                } else {
+                    // Remplir le tableau avec les données
+                    data.forEach(item => {
+                        const row = document.createElement('tr');
+
+                        const nombreCell = document.createElement('td');
+                        nombreCell.textContent = item.nombre;
+                        row.appendChild(nombreCell);
+
+                        const langueCell = document.createElement('td');
+                        langueCell.textContent = item.langue;
+                        row.appendChild(langueCell);
+
+                        const dateCell = document.createElement('td');
+                        const date = new Date(item.dateRecherche);
+                        dateCell.textContent = date.toLocaleString();
+                        row.appendChild(dateCell);
+
+                        historiqueBody.appendChild(row);
+                    });
+                }
             })
             .catch(error => {
                 document.getElementById('erreur').textContent = error.message;
