@@ -56,31 +56,29 @@
         })
             .then(response => {
                 if (!response.ok) {
-                    return response.json().then(err => {
-                        throw new Error(err.message || err.error || 'Erreur ' + response.status);
-                    });
+                    throw new Error('Erreur ' + response.status);
                 }
                 return response.json();
             })
             .then(data => {
-                // Si la réponse est un succès
+                // Afficher la traduction
                 const traduction = langue === 'FR' ? data.french : data.german;
                 document.getElementById('resultat').textContent = 'Traduction : ' + traduction;
                 document.getElementById('erreur').textContent = '';
 
-                // Enregistrement silencieux dans l'historique
-                fetch('http://localhost:804/historique/add', {
+                // Enregistrer dans l'historique
+                return fetch('http://localhost:804/historique/add', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         nombre: parseInt(nombre),
                         langue: langue,
-                        dateRecherche: new Date().toISOString()
+                        localDateTime: new Date().toISOString()
                     })
                 });
             })
             .catch(error => {
-                document.getElementById('erreur').textContent = error.message || 'Une erreur est survenue';
+                document.getElementById('erreur').textContent = error.message;
                 document.getElementById('resultat').textContent = '';
             });
     });
@@ -89,37 +87,32 @@
     document.getElementById('afficher-historique').addEventListener('click', () => {
         const historiqueContainer = document.getElementById('historique-container');
 
-        // Si l'historique est caché, on le charge et l'affiche
         if (historiqueContainer.style.display === 'none' || !historiqueContainer.style.display) {
+            // Charger et afficher l'historique
             chargerHistorique();
             historiqueContainer.style.display = 'block';
             document.getElementById('afficher-historique').textContent = 'Masquer l\'historique';
         } else {
-            // Sinon on le cache
+            // Cacher l'historique
             historiqueContainer.style.display = 'none';
             document.getElementById('afficher-historique').textContent = 'Afficher l\'historique';
         }
     });
 
+    // Fonction pour charger l'historique
     function chargerHistorique() {
-        fetch('http://localhost:804/historique/list', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        })
+        fetch('http://localhost:804/historique/list')
             .then(response => {
                 if (!response.ok) {
-                    return response.json().then(err => {
-                        throw new Error(err.message || err.error || 'Erreur ' + response.status);
-                    });
+                    throw new Error('Erreur ' + response.status);
                 }
                 return response.json();
             })
             .then(data => {
                 const historiqueBody = document.getElementById('historique-body');
-                historiqueBody.innerHTML = ''; // Vider le tableau
+                historiqueBody.innerHTML = '';
 
-                if (data.length === 0) {
-                    // Afficher un message si l'historique est vide
+                if (!data || data.length === 0) {
                     const row = document.createElement('tr');
                     const cell = document.createElement('td');
                     cell.colSpan = 3;
@@ -128,7 +121,6 @@
                     row.appendChild(cell);
                     historiqueBody.appendChild(row);
                 } else {
-                    // Remplir le tableau avec les données
                     data.forEach(item => {
                         const row = document.createElement('tr');
 
@@ -141,8 +133,28 @@
                         row.appendChild(langueCell);
 
                         const dateCell = document.createElement('td');
-                        const date = new Date(item.dateRecherche);
-                        dateCell.textContent = date.toLocaleString();
+                        // Formatage de la date selon la structure reçue
+                        if (item.localDateTime) {
+                            if (typeof item.localDateTime === 'string') {
+                                // Si c'est une chaîne ISO
+                                dateCell.textContent = new Date(item.localDateTime).toLocaleString();
+                            } else if (item.localDateTime.year) {
+                                // Si c'est un objet LocalDateTime sérialisé
+                                const date = new Date(
+                                    item.localDateTime.year,
+                                    item.localDateTime.monthValue - 1, // Mois commence à 0 en JavaScript
+                                    item.localDateTime.dayOfMonth,
+                                    item.localDateTime.hour,
+                                    item.localDateTime.minute,
+                                    item.localDateTime.second
+                                );
+                                dateCell.textContent = date.toLocaleString();
+                            } else {
+                                dateCell.textContent = "Format inconnu";
+                            }
+                        } else {
+                            dateCell.textContent = "Date non disponible";
+                        }
                         row.appendChild(dateCell);
 
                         historiqueBody.appendChild(row);
@@ -150,7 +162,7 @@
                 }
             })
             .catch(error => {
-                document.getElementById('erreur').textContent = error.message;
+                console.error("Erreur:", error);
             });
     }
 </script>
