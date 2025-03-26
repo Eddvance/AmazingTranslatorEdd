@@ -20,7 +20,7 @@ public class TranslationResource {
     private final TranslationServiceInterface translationService;
     private final HistoriqueTranslationService historiqueServ;
 
-    public TranslationResource(TranslationServiceInterface translationService, HistoriqueTranslationService historiqueServ){
+    public TranslationResource(TranslationServiceInterface translationService, HistoriqueTranslationService historiqueServ) {
         this.translationService = translationService;
         this.historiqueServ = historiqueServ;
     }

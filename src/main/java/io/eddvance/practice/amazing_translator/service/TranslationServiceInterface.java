@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface TranslationServiceInterface {
     Translation findByNumber(int number);
+
     List<Translation> findAll();
+
     List<HistoriqueDto> getAllHistoriques();
-
-
 }

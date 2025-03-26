@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class TranslationService implements TranslationServiceInterface {
     private final TranslationRepositoryInterface translationRepository;
+
     public TranslationService(TranslationRepositoryInterface translationRepository) {
         this.translationRepository = translationRepository;
     }
@@ -29,5 +30,4 @@ public class TranslationService implements TranslationServiceInterface {
     public List<HistoriqueDto> getAllHistoriques() {
         return List.of();
     }
-
 }
